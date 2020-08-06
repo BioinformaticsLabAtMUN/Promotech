@@ -1,5 +1,6 @@
 __pycache__
 genome/__pycache__
+sequences/__pycache__
 core/__pycache__
 ui/__pycache__
 models/RF-TETRA.model
