@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PromotechUI</class>
+ <widget class="QWidget" name="PromotechUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1196</width>
+    <height>825</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Promotech</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="title_label">
+     <property name="styleSheet">
+      <string notr="true">font: 24pt &quot;Times New Roman&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Promotech V1.0</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="description_label">
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Description</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="model_label">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Model</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Random Forest (Hot-encoded features)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Random Forest (Tetra-nucleotide frequencies)</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="sequences_radio_button">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+       </property>
+       <property name="text">
+        <string>40 Nucleotide Sequences</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="console_radio_button">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Console</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_8">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="results_radio_button">
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Results</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="sequences_stacked_widget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Times New Roman&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Predict 40 Promoters in Nucleotides Sequences</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Description</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Write below the 40 nucleotide sequences in FASTA format  or select the your FASTA file and click Predict.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sequences_browse_push_button">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Browse...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sequences_predict_push_button">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Predict</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="sequences_file_location_label">
+         <property name="styleSheet">
+          <string notr="true">font: 12pt &quot;Times New Roman&quot;;
+color: rgb(0, 55, 255);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="sequences_text_edit">
+         <property name="plainText">
+          <string>&gt;NC_000913.2:108-148(+)|POSITIVE_EXAMPLE
+TATTGACTTAGGTCACTAAATACTTTAACCAATATAGGCA
+&gt;NC_000913.2:2541-2581(+)|POSITIVE_EXAMPLE
+GCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATA
+&gt;NC_000913.2:5107-5147(+)|POSITIVE_EXAMPLE
+AAAAGGAGAAATTCTCAATAAATGCGGTAACTTAGAGATT
+&gt;NC_000913.2:8002-8042(+)|POSITIVE_EXAMPLE
+ACGTTACCAATTGTTTAAGAAGTATATACGCTACGAGGTA
+&gt;NC_000913.2:8052-8092(-)|POSITIVE_EXAMPLE
+CCCGCCATTTTTATACAAAACCTCATGTATGCTACGCAGA
+
+&gt;NC_000913.2:2315833-2315873(+)|NEGATIVE_EXAMPLE
+GAATACGCACGGTAAACTGGCTGCCCATTCCCGGTTCTGA
+&gt;NC_000913.2:2412757-2412797(+))|NEGATIVE_EXAMPLE
+GAGGATAAACCGTGTCCCGTATTATTATGCTGATCCCTAC
+&gt;NC_000913.2:1042622-1042662(+))|NEGATIVE_EXAMPLE
+ATTCAAGGCTTTGTGAATCCTGCGCCGCCTGGCGAGCGAT
+&gt;NC_000913.2:2099823-2099863(+))|NEGATIVE_EXAMPLE
+TTTCTTCATGTTTGAGCCGATTTTTTCTCCCGTAAATGCC
+&gt;NC_000913.2:2278759-2278799(-))|NEGATIVE_EXAMPLE
+CGAGCCAGCCGTGCCAGTTCCGCTATCACCAGGCTTTTAC</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="styleSheet">
+          <string notr="true">font: 18pt &quot;Times New Roman&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Predict Promoters in an Entire Genome</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Description</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Select the entire genome FASTA file.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="genome_browse_pushButton">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Browse...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="genome_predict_pushButton">
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Predict</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="genome_file_location_label">
+         <property name="styleSheet">
+          <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Console</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="console_text_edit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_4">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Results</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableView" name="results_table_view"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="message_label">
+     <property name="styleSheet">
+      <string notr="true">font: 12pt &quot;Times New Roman&quot;;
+color: rgb(0, 179, 0);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="progress_bar">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ <slots>
+  <signal>on_prediction_mode_toogled(bool)</signal>
+  <slot>set_prediction_mode(bool)</slot>
+ </slots>
+</ui>

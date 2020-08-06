@@ -1,0 +1,5 @@
+QXcbConnection: Could not connect to display
+Aborted (core dumped)”
+
+Install xming to run GUI from Windows WSL Linux
+https://sourceforge.net/projects/xming/files/latest/download
