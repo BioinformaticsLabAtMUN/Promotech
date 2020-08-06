@@ -22,7 +22,7 @@ Description
    - The **optional** arguments used with this command are `-M, --model`, and `--TS, --test-samples`. 
 6. `-G, --predict-genome` -  This command uses the files generated using the `-PG, --parse-genome` argument and located in the "results" folder. 
    - The **optional** argument used with this command is `-M, --model`. Make sure to match the same model type used during the parsing stage.
-7. `-P, --predict-sequences` - 
+7. `-P, --predict-sequences` - Used to parse and predict 40nt sequences from a FASTA file.
    - The **mandatory** argument used with this command is `-F, --fasta`. 
    - Make sure that the FASTA file has only 40-nt sequences as shown in the example below. If you require to use longer sequences, use the `-PG, --parse-genome` and `-G, --predict-genome` commands.
    ```
@@ -44,14 +44,14 @@ Description
 Description
 
 
-1. Parse the genome FASTA File
+1. Parse the whole genome FASTA File
 
-`python promotech.py -PG -F tests/genome/ECOLI_2.fasta` 
+`python promotech.py -PG -F examples/genome/ECOLI_2.fasta` 
 
 or smaller number of sequences can be used for testing purposes using the **--test-samples, -TS** parameter.
 
-`python promotech.py -PG -TS 20000 -F tests/genome/ECOLI_2.fasta` 
+`python promotech.py -PG -TS 20000 -F examples/genome/ECOLI_2.fasta` 
 
-2. Predict Promoter Sequences Using the Parsed Sequences
+2. Predict promoter sequences using the parsed sequences
 
 `python promotech.py -G `
