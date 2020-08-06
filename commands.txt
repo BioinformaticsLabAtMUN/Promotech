@@ -9,7 +9,14 @@ git lfs install
 git lfs track '*.model'
 git lfs track '*.h5'
 
- git log origin/master..HEAD
- git diff --cached --name-only
- git show --stat --oneline HEAD
- git reset --soft HEAD^
+git log origin/master..HEAD
+git diff --cached --name-only
+git show --stat --oneline HEAD
+git reset --soft HEAD^
+
+conda create --name promotech_env python=3.6
+conda env export > promotech_env.yml
+conda info --envs
+conda activate promotech_env
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh

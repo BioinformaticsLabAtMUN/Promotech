@@ -1,6 +1,7 @@
 __pycache__
 genome/__pycache__
 core/__pycache__
+ui/__pycache__
 models/RF-TETRA.model
 models/RF-HOT.model
 results

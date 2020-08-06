@@ -4,6 +4,7 @@ from Bio import SeqIO, Seq
 from pathlib import Path
 import joblib, traceback, os, sys
 dir_path = os.path.dirname(os.path.realpath(__file__))
+# print("ADDING PATH: ", "{}/../core".format(dir_path) )
 sys.path.append("{}/../core".format(dir_path))
 from utils import fastaToHotEncodingSequences, charToBinary, print_fn
 
@@ -68,11 +69,13 @@ def genome40NTSequencesToHotEncoding(fasta_file_path, out_dir="results", promote
   
   if(out_dir is None):
     raise "VARIABLE out_dir is None. Please specify the output folder.".format()
+  if not os.path.exists(fasta_file_path)  :
+    raise ValueError("FASTA PATH {} DOES NOT EXISTS.".format(fasta_file_path))
 
   parent_folder      = Path(fasta_file_path).stem
   log_file           = os.path.join(out_dir, "parse.log.txt")
   start_time         = time.time()
-  os.makedirs(  out_dir , exist_ok=True)
+  os.makedirs(  out_dir , exist_ok=True )
   print_fn("\n\n CREATING OUTPUT FOLDER: {}".format( out_dir ), log_file)
   
   chrom, cutted_seqs = genomeSlidingWindow(fasta_file_path=fasta_file_path, log_file=log_file, promoter_size=promoter_size, step_size=step_size, print_fn=print_fn)
@@ -104,6 +107,8 @@ def genome40NTSequencesToHotEncoding(fasta_file_path, out_dir="results", promote
     cutted_seqs[0]     , 
     inv_cutted_seqs[0] ,
   ), log_file)
+  inv_seqs_output_path           = os.path.join( out_dir, "SEQS-INV.data" )  
+  joblib.dump(  inv_cutted_seqs  , inv_seqs_output_path   )
   print_fn("\n\t TIME ELAPSED FROM START (HOUR:MIN:SEC): {}".format( time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)) ) , log_file)
   
   print_fn("\n\n CONVERTING {} INVERSE STRAND {} NT SEQUENCES TO HOT ENCODED SEQUENCES USING MAPPING VALUES \n\n\t{}".format( len(inv_cutted_seqs), promoter_size, [ { nt : charToBinary(nt) } for nt in "AGCT" ] ), log_file) 
@@ -132,18 +137,27 @@ def predictGenomeSequences(
     print("NO LOG FILE SPECIFIED. REDIRECTING OUTPUT TO CONSOLE.")
     print_fn = print
     
-  log_file           = os.path.join(out_dir, "predict.log.txt")
+  log_file              = os.path.join(out_dir, "predict.log.txt")
+  chrom_output_path     = os.path.join( out_dir, "CHROM.data" )  
+  seqs_output_path      = os.path.join( out_dir, "SEQS.data" )  
+  inv_seqs_output_path  = os.path.join( out_dir, "SEQS-INV.data" )  
   forward_strand_hot_enc_seqs_file= os.path.join("results", "{}.data".format( model_type ) ) 
   inverse_strand_hot_enc_seqs_file= os.path.join("results", "{}-INV.data".format( model_type ) ) 
   
   if not os.path.exists(out_dir)  :
-    raise ValueError("FILE PATH {} NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(out_dir))
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(out_dir))
   if not os.path.exists(forward_strand_hot_enc_seqs_file)  :
-    raise ValueError("FILE PATH {} NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(forward_strand_hot_enc_seqs_file))
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(forward_strand_hot_enc_seqs_file))
   if not os.path.exists(inverse_strand_hot_enc_seqs_file)  :
-    raise ValueError("FILE PATH {} NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(inverse_strand_hot_enc_seqs_file))
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(inverse_strand_hot_enc_seqs_file))
+  if not os.path.exists(chrom_output_path)  :
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(chrom_output_path))
+  if not os.path.exists(seqs_output_path)  :
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(seqs_output_path))
+  if not os.path.exists(inv_seqs_output_path)  :
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(inv_seqs_output_path))
   if not os.path.exists(model_file_path)  :
-    raise ValueError("FILE PATH {} NOT EXISTS. PLEASE MAKE SURE TO ADD YOUR MODEL '{}'(.model or .h5) FILE TO THE 'models' FOLDER.".format(model_file_path, model_type))
+    raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE MAKE SURE TO ADD YOUR MODEL '{}'(.model or .h5) FILE TO THE 'models' FOLDER.".format(model_file_path, model_type))
   
   start_time        = time.time()
   print_fn("\n\n LOADING FORWARD STRAND SEQUENCES CONVERTED TO HOT-ENCODED SEQUENCES: {} WITH SIZE: {:,.2f} MB".format( 
@@ -187,4 +201,31 @@ def predictGenomeSequences(
   print_fn("\n\n FORWARD STRAND PREDICTIONS ABOVE THRESHOLD: {:,} and BELOW: {:,} FROM TOTAL {:,}".format( len(y_pred[y_pred >= threshold]), len(y_pred[y_pred < threshold]), len(y_pred) ), log_file)
   print_fn("\n\n INVERSE STRAND PREDICTIONS ABOVE THRESHOLD: {:,} and BELOW: {:,} FROM TOTAL {:,}".format( len(y_inv_pred[y_inv_pred >= threshold]), len(y_inv_pred[y_inv_pred < threshold]), len(y_inv_pred) ), log_file)
   
-
+  chrom                 = joblib.load( chrom_output_path )
+  seqs                  = joblib.load( seqs_output_path )
+  inv_seqs              = joblib.load( inv_seqs_output_path )
+  print_fn("\n\n GENERATING DETECTED PROMOTERS' BED FILE BASED ON THRESHOLD: {:.3f} FOR CHROM: {}. # SEQS: {} # INV SEQS: {}. # SEQS ABOVE THRES: {} # INV SEQS ABOVE THRES: {}".format( threshold , chrom, len(seqs), len(inv_seqs), len(y_pred[y_pred >= threshold]), len(y_inv_pred[y_inv_pred >= threshold]) ), log_file)
+  
+  df = pd.DataFrame(columns=['chrom', 'start', 'end', 'score', 'strand', 'sequence'])
+  for i_s, s in enumerate( seqs ):
+    pred_score = y_pred[i_s]
+    if pred_score > threshold:
+      df = df.append({ 
+        'chrom': chrom, 'start': i_s, 'end': i_s+39, 
+        'score': np.round(pred_score, 4), 'strand': "+", 
+        'sequence': seqs[i_s] 
+      }, ignore_index=True)
+    inv_pred_score = y_inv_pred[i_s]
+    if inv_pred_score > threshold:
+      df = df.append({ 
+        'chrom': chrom, 'start': i_s, 'end': i_s+39, 
+        'score': np.round(inv_pred_score, 4), 'strand': "-", 
+        'sequence': inv_seqs[i_s] 
+      }, ignore_index=True)
+  pred_file_path = os.path.join(out_dir, "genome_predictions.csv")
+  print_fn("\n\n SAVING BED FILE WITH SHAPE {} TO {}. SAMPLE: \n\n{}".format( df.shape, pred_file_path, df.head() ), log_file)
+  df.to_csv(pred_file_path, index=None, sep='\t', columns=None)
+  print_fn("\n\t TIME ELAPSED FROM START (HOUR:MIN:SEC): {}".format( time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)) ) , log_file)  
+  
+  
+    

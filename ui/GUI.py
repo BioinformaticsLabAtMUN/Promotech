@@ -7,31 +7,11 @@ from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtCore import QRunnable, pyqtSlot, pyqtSignal, QObject, QAbstractTableModel
 Qt = QtCore.Qt
 
-
-dir_path = os.path.dirname(os.path.realpath(__file__))
-print("ADDING PATH: ", "{}/../core".format(dir_path) )
-sys.path.append("{}/../sequences".format(dir_path))
-from process_sequences import parseSequences
+# dir_path = os.path.dirname(os.path.realpath(__file__))
+# print("ADDING PATH: ", "{}/../core".format(dir_path) )
+# sys.path.append("{}/../sequences".format(dir_path))
+# from process_sequences import parseSequences
 # pyuic5 ui/form.ui -o ui/GUI.py
-
-def demo_preprocess(seqs, progress_bar=None, print_fn=None):
-    print("PREPROCESSING")
-    preprocessed_seqs = parseSequences(seqs=seqs, sequence_length=40, slop_mode="middle", tokenizer_path=None, data_type="RF-HOT")
-    return preprocessed_seqs
-
-def demo_predict_seqs(seqs, model,  progress_bar=None, print_fn=print):
-    print_fn("PREDICTING" + str(seqs.shape) + str(model) )
-    if(seqs is None):
-        print_fn("NO INPUT SEQUENCE GIVEN.")
-        return None
-    if(seqs is None or model is None):
-        print_fn("NO ML MODEL GIVEN.")
-        return None
-    y_probs = model.predict_proba(seqs)
-    y_pred  = y_probs[:, 1] if y_probs.shape[1] == 2 else y_probs[:, 0]
-    print_fn(y_probs)
-    print_fn(y_pred)
-    return y_pred
 
 class PandasModel(QAbstractTableModel):
     def __init__(self, data, parent=None):
@@ -241,14 +221,35 @@ class Promotech_UI(QWidget):
             header.setSectionResizeMode(i, header_width_formats[i] )
     def update_console(self, msg ):
         self.console_text_edit.insertPlainText( msg );
-if __name__ == "__main__":
-    app = QApplication([])
-    widget = Promotech_UI(
-        ui_path=dir_path+"/form.ui",
-        init_function=None,
-        preprocess_seqs_fn=demo_preprocess,
-        predict_seqs_fn=demo_predict_seqs,
-        predict_gen_fn=None
-    )
-    widget.show()
-    sys.exit(app.exec_())
+
+
+def demo_preprocess(seqs, progress_bar=None, print_fn=None):
+    print("PREPROCESSING")
+    preprocessed_seqs = parseSequences(seqs=seqs, sequence_length=40, slop_mode="middle", tokenizer_path=None, data_type="RF-HOT")
+    return preprocessed_seqs
+
+# def demo_predict_seqs(seqs, model,  progress_bar=None, print_fn=print):
+#     print_fn("PREDICTING" + str(seqs.shape) + str(model) )
+#     if(seqs is None):
+#         print_fn("NO INPUT SEQUENCE GIVEN.")
+#         return None
+#     if(seqs is None or model is None):
+#         print_fn("NO ML MODEL GIVEN.")
+#         return None
+#     y_probs = model.predict_proba(seqs)
+#     y_pred  = y_probs[:, 1] if y_probs.shape[1] == 2 else y_probs[:, 0]
+#     print_fn(y_probs)
+#     print_fn(y_pred)
+#     return y_pred
+
+# if __name__ == "__main__":
+#     app = QApplication([])
+#     widget = Promotech_UI(
+#         ui_path=dir_path+"/form.ui",
+#         init_function=None,
+#         preprocess_seqs_fn=demo_preprocess,
+#         predict_seqs_fn=demo_predict_seqs,
+#         predict_gen_fn=None
+#     )
+#     widget.show()
+#     sys.exit(app.exec_())
