@@ -6,3 +6,4 @@ models/RF-HOT.model
 results
 models/RF-HOT.model
 *.model
+*.pyc
