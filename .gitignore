@@ -1,0 +1,8 @@
+__pycache__
+genome/__pycache__
+core/__pycache__
+models/RF-TETRA.model
+models/RF-HOT.model
+results
+models/RF-HOT.model
+*.model
