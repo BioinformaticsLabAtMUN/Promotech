@@ -212,14 +212,14 @@ def predictGenomeSequences(
     if pred_score > threshold:
       df = df.append({ 
         'chrom': chrom, 'start': i_s, 'end': i_s+39, 
-        'score': np.round(pred_score, 4), 'strand': "+", 
+        'score': np.round(pred_score, 5), 'strand': "+", 
         'sequence': seqs[i_s] 
       }, ignore_index=True)
     inv_pred_score = y_inv_pred[i_s]
     if inv_pred_score > threshold:
       df = df.append({ 
         'chrom': chrom, 'start': i_s, 'end': i_s+39, 
-        'score': np.round(inv_pred_score, 4), 'strand': "-", 
+        'score': np.round(inv_pred_score, 5), 'strand': "-", 
         'sequence': inv_seqs[i_s] 
       }, ignore_index=True)
   pred_file_path = os.path.join(out_dir, "genome_predictions.csv")

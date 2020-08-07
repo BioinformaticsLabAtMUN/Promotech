@@ -20,3 +20,13 @@ conda info --envs
 conda activate promotech_env
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+pip freeze > requirements.txt
+
+conda install numpy pandas matplotlib scipy scikit-learn progressbar2 XlsxWriter QtPy tensorflow==2.1.0
+conda install -c bioconda/label/cf201901 java-jdk
+conda install -c bioconda bedtools
+conda install --channel conda-forge --channel bioconda pybedtools
+conda install -c anaconda pyqt
+conda install -c conda-forge scikit-bio
+conda install -c conda-forge biopython
+pip install 

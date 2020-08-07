@@ -64,14 +64,14 @@ if __name__ == "__main__":
     elif(args.parse_genome):
       if fasta_file_path is None:
         raise ValueError("Argument (--fasta, -F) is missing.")
-      # clear && python promotech.py-pg -ts 20000 -f examples/genome/ECOLI_2.fasta
+      # clear && python promotech.py-pg -ts 50000 -f examples/genome/ECOLI_2.fasta
       genome40NTSequencesToHotEncoding(
         fasta_file_path  = fasta_file_path[0], 
         out_dir          = "results",
         test_sample_size = args.test_samples,
       )
     elif args.predict_genome:
-      # clear && python promotech.py -G 
+      # clear && python promotech.py -g
       predictGenomeSequences(
         out_dir         = "results",
         model_type      = args.model,

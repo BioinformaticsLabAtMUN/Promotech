@@ -164,7 +164,8 @@ def getHotFeatures(sequences):
   data     = np.empty( (n_seqs, len(sample)*4) , dtype=np.ndarray)
   bar      = progressbar.ProgressBar(max_value=n_seqs)
   for i , seq in enumerate( sequences ):
-    data[i, :] = sequenceToBinary(seq); bar.update(i)
+    data[i, :] = sequenceToBinary(seq)
+    bar.update(i)
   return data
 def fastaToHotEncodingSequences(seqs, nucleotide_order="AGCT"):
   I = np.identity(4)
@@ -172,8 +173,33 @@ def fastaToHotEncodingSequences(seqs, nucleotide_order="AGCT"):
   data = getHotFeatures(seqs)
   return pd.DataFrame(data, columns=columns, dtype='int32')
 
-#########################################################################################################
-    
+#############################################TETRA-NUCLEOTIDES############################################################
+def fastaToTetranucleotides(seqs):
+  template = all_tetra_subsets()
+  columns=all_tetra_subsets()
+  columns.append('label')
+  data   = np.empty( (len(seqs), 37), dtype=object )
+  bar      = progressbar.ProgressBar(max_value=len(seqs))
+  for i_s, s in enumerate(seqs):
+    tetra_nucleotides = list()
+    for k in range(len(s)):
+      segment = s[k :  k+4 if k+4 <= len(s) else len(s) ]
+      if len(segment) == 4:
+        tetra_nucleotides.append([segment])
+        data[i_s, k] = segment
+    bar.update(i_s)
+  return pd.DataFrame(data)
+
+
+def tetranucleotideToStringSentences(data):
+  tetra_list = np.empty(len(data), dtype=object )
+  bar      = progressbar.ProgressBar(max_value=len(data))
+  for i, tetras in enumerate(data): 
+    tetra_list[i] = " ".join(tetras)
+    bar.update(i)
+  return tetra_list
+
+##############################################################################################################################
 def stringToBinaryArray(string):
   tokenArray = list(string)
   result = list()
