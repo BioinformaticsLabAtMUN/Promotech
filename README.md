@@ -7,12 +7,20 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
    - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
    - `bash miniconda.sh`
-2. Install conda environment from the prebuilt environment YAML file. 
+2. Install conda environment from the prebuilt environment YAML file. The environment was made on Ubuntu 20.04, some requirements will require different versions of the packages for different operating systems.
    - `conda env create -f promotech_env.yml`
 3. Activate environment
    - `conda activate promotech_env`
 
 **Note:** A minimum of 24 GB of RAM memory is recommended to run the RF-HOT, LSTM, and GRU model on an entire genome. Parsing an entire genome to the RF-TETRA model's input format can produce the python "Memory Error" due to the high complexity and high RAM-memory demand required to obtain the tetra-nucleotide frequencies for millions of sequences in forward and inverse strand. An example of this process is shown in the examples section below. All models can run on lower-end systems, with at least 8GB of RAM, when predicting FASTA files with hundreds or thousands of sequences, 40 nt in length. 
+
+The examples in the section below were tested in a desktop computer with the following specifications:
+
+- Processor      : Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz 2.40 GHz 
+- RAM            : 24.0 GB (23.8 GB usable)
+- System Type    : 64-bit Ubuntu 20.04 LTS
+- Graphic Memory : NVIDIA GeForce RTX 2060 6GB GDDR6
+
 
 ## Commands
 
@@ -45,14 +53,6 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 
 
 ## Predicting Promoters Examples
-
-The following examples were tested in a desktop computer with the following specifications:
-
-- Processor      : Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz 2.40 GHz 
-- RAM            : 24.0 GB (23.8 GB usable)
-- System Type    : 64-bit Ubuntu 18.04 LTS
-- Graphic Memory : NVIDIA GeForce RTX 2060 6GB GDDR6
-
 
 ### 40 Nucleotide Sequences
 1. Parse and predict using the `--predict-sequence, -s` command and specify the FASTA file using `--fasta, -f`. The FASTA file should only include 40nt sequences. If you require to predict longer sequences, use the "whole-genome" commands.
