@@ -1,0 +1,87 @@
+ >> python promotech.py -s -m RF-HOT -f examples/sequences/test.fasta
+
+          PROMOTECH
+          MODE         : COMMAND-LINE
+          ML MODEL     : FASTA FILE
+          INPUT TYPE   : RF-HOT
+          INPUT        : ['examples/sequences/test.fasta']
+          TEST SAMPLES : None
+
+
+
+ READING FASTA FILE: examples/sequences/test.fasta
+
+
+ SAMPLE:
+
+{'id': 'NC_000913.2:2541-2581(+)|POSITIVE', 'seq': 'GCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATA'}
+
+
+ # SEQS: 9. SAMPLE: GCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATA
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:00
+
+
+ CONVERTING SEQUENCES TO RF-HOT DATA TYPE
+
+
+ INPUT SHAPE 9
+SAMPLE WITH LEN 40:
+GCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATA
+
+
+ CONVERTING DATA
+N/A% (0 of 9) |                                                                  | Elapsed Time: 0:00:00 ETA:  --:--:--
+
+ HOT ENCODED SEQUENCES GENERATED SUCCESSFULLY.
+
+
+   A  G  C  T  A ...  T  A  G  C  T
+0  0  1  0  0  0 ...  1  1  0  0  0
+1  1  0  0  0  1 ...  1  0  0  0  1
+2  1  0  0  0  0 ...  1  1  0  0  0
+3  0  0  1  0  0 ...  0  1  0  0  0
+4  0  1  0  0  1 ...  0  1  0  0  0
+
+[5 rows x 160 columns]
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:00
+
+
+ LOADING ML MODEL models/RF-HOT.model
+/home/ruben/miniconda3/envs/promotech_env/lib/python3.6/site-packages/sklearn/base.py:334: UserWarning: Trying to unpickle estimator DecisionTreeClassifier from version 0.23.0 when using version 0.23.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/home/ruben/miniconda3/envs/promotech_env/lib/python3.6/site-packages/sklearn/base.py:334: UserWarning: Trying to unpickle estimator RandomForestClassifier from version 0.23.0 when using version 0.23.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/home/ruben/miniconda3/envs/promotech_env/lib/python3.6/site-packages/sklearn/base.py:334: UserWarning: Trying to unpickle estimator GridSearchCV from version 0.23.0 when using version 0.23.1. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:12
+
+
+ PREDICTING SEQUNCES USING:
+
+GridSearchCV(cv=10,
+             estimator=RandomForestClassifier(class_weight={0: 0.5512173740112261,
+                                                            1: 5.381156147232458},
+                                              min_samples_leaf=5, verbose=2),
+             iid=False,
+             param_grid={'max_features': ['log2'], 'n_estimators': [2000]},
+             refit='average_precision',
+             scoring=['average_precision', 'precision', 'recall'], verbose=2)
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    0.0s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done 2000 out of 2000 | elapsed:    0.1s finished
+
+         PREDICTIONS GENERATED SUCCESSFULLY. SAMPLE:
+
+                                     CHROM      PRED                                       SEQ
+0        NC_000913.2:2541-2581(+)|POSITIVE  0.832246  GCCCGTGATGAAGGAAAAGTTTTGCGCTATGTTGGCAATA
+1        NC_000913.2:5107-5147(+)|POSITIVE  0.713419  AAAAGGAGAAATTCTCAATAAATGCGGTAACTTAGAGATT
+2        NC_000913.2:8002-8042(+)|POSITIVE  0.642305  ACGTTACCAATTGTTTAAGAAGTATATACGCTACGAGGTA
+3        NC_000913.2:8052-8092(-)|POSITIVE  0.735783  CCCGCCATTTTTATACAAAACCTCATGTATGCTACGCAGA
+4  NC_000913.2:2315833-2315873(+)|NEGATIVE  0.095024  GAATACGCACGGTAAACTGGCTGCCCATTCCCGGTTCTGA.
+
+SAVED AT results/sequences_predictions.csv
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:12

@@ -7,8 +7,9 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
    - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
    - `bash miniconda.sh`
-2. Install conda environment from the prebuilt environment YAML file. The environment was made on Ubuntu 20.04, some requirements will require different versions of the packages for different operating systems.
+2. Install conda environment from the prebuilt environment YAML file. 
    - `conda env create -f promotech_env.yml`
+   - **Note:** The environment was made on Ubuntu 20.04, different versions of the packages could be required for different operating systems.
 3. Activate environment
    - `conda activate promotech_env`
 
@@ -16,10 +17,11 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 
 The examples in the section below were tested in a desktop computer with the following specifications:
 
-- Processor      : Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz 2.40 GHz 
-- RAM            : 24.0 GB (23.8 GB usable)
-- System Type    : 64-bit Ubuntu 20.04 LTS
-- Graphic Memory : NVIDIA GeForce RTX 2060 6GB GDDR6
+- **Processor      :** Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz 2.40 GHz 
+- **RAM            :** 24.0 GB (23.8 GB usable)
+- **System Type    :** 64-bit Ubuntu 20.04 LTS
+- **Graphic Memory :** NVIDIA GeForce RTX 2060 6GB GDDR6
+- **Python Version :** Python 3.6
 
 
 ## Commands
@@ -55,24 +57,24 @@ The examples in the section below were tested in a desktop computer with the fol
 ## Predicting Promoters Examples
 
 ### 40 Nucleotide Sequences
-1. Parse and predict using the `--predict-sequence, -s` command and specify the FASTA file using `--fasta, -f`. The FASTA file should only include 40nt sequences. If you require to predict longer sequences, use the "whole-genome" commands.
+1. Parse and predict using the `--predict-sequence, -s` command and specify the FASTA file using `--fasta, -f`. The FASTA file should only include 40nt sequences. If you require to predict longer sequences, use the "whole-genome" commands. An example of the command-line output obtained when running this command is found [HERE](examples/sequences/example.log.txt)
 
-`clear && python promotech.py -s -f examples/sequences/test.fasta -m "RF-HOT"`
+`python promotech.py -s -m RF-HOT -f examples/sequences/test.fasta`
 
 ### Whole-Genome
 
-1. Parse the whole-genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the **--test-samples, -ts** parameter.
+1. Parse the whole-genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the `--test-samples, -ts` parameter.  An example of the command-line output obtained when running this command is found [HERE](examples/genome/parse.example.log.txt)
 
-`python promotech.py -pg -f  -m RF-HOT examples/genome/ECOLI_2.fasta` 
+`python promotech.py -pg -m RF-HOT -f examples/genome/ECOLI_2.fasta` 
 
 or 
 
-`python promotech.py -pg -ts 20000 -f -m RF-HOT examples/genome/ECOLI_2.fasta` 
+`python promotech.py -pg -ts 20000 -m RF-HOT -f examples/genome/ECOLI_2.fasta` 
 
 - **Note:** Running one of the following commands will use a sliding window of 40nt size and 1nt step, pre-processed the sequences to meet the specified model's input requirement and create two files, **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**, for forward and inverse strand, where MODEL_TYPE specifies the type of model that will later be used for assessing the pre-processed 40nt sequences. **Do not delete the 'results' folder or the '.data' files**, because they will be used in the next step.
 - **Note:** For comparison, the pipeline configured to generate data for the RF-HOT model, took 35 minutes and 42 seconds to cut 4,639,634 forward and 4,639,634 inverse sequences from the *E. coli* (NC_000913.2) genome with 4,639,675 nucleotides in length, pre-processed them to hot-encoded binary format, save them to two binary files and each file was 5.8 GB in size. During this time, it maintained around 18.5/24GB of RAM exclusively for the python running process.
 
-2. Predict promoter sequences using the parsed sequences using `--predict-genome, -g`, assign a threshold using `--threshold, -t`, and select a model using `--model, -m`. The default threshold, and model are 0.5, and RF-HOT, respectively.
+2. Predict promoter sequences using the parsed sequences using `--predict-genome, -g`, assign a threshold using `--threshold, -t`, and select a model using `--model, -m`. The default threshold, and model are 0.5, and RF-HOT, respectively. An example of the command-line output obtained when running this command is found [HERE](examples/genome/predict.example.log.txt)
 
 `python promotech.py -g -t 0.6`
 
