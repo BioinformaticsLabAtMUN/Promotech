@@ -1,0 +1,107 @@
+>> python promotech.py -g -t 0.5
+
+
+2020-08-10 16:00:11.042238: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
+2020-08-10 16:00:11.043297: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
+2020-08-10 16:00:11.043489: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+          PROMOTECH
+          MODE         : COMMAND-LINE
+          ML MODEL     : 40NT SEQUENCE
+          INPUT TYPE   : RF-HOT
+          INPUT        : None
+          TEST SAMPLES : None
+
+
+
+ LOADING MACHINE LEARNING MODEL AT: models/RF-HOT.model WITH SIZE: 3,770.57 MB
+
+
+GridSearchCV(cv=10,
+             estimator=RandomForestClassifier(class_weight={0: 0.5512173740112261,
+                                                            1: 5.381156147232458},
+                                              min_samples_leaf=5, verbose=2),     
+             iid=False,
+             param_grid={'max_features': ['log2'], 'n_estimators': [2000]},       
+             refit='average_precision',
+             scoring=['average_precision', 'precision', 'recall'], verbose=2)
+
+
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:11
+
+
+ LOADING FORWARD STRAND SEQUENCES CONVERTED TO HOT-ENCODED SEQUENCES: results/RF-HOT.data WITH SIZE: 5,938.73 MB
+
+
+ LOADING FORWARD STRAND SEQUENCES CONVERTED TO HOT-ENCODED SEQUENCES AT: results/RF-HOT-INV.data WITH SIZE: 5,938.73 MB
+
+
+FORWARD STRAND SEQS: (4639634, 160)
+INVERSE STRAND SEQS: (4639634, 160)
+ML-MODEL:
+
+GridSearchCV(cv=10,
+             estimator=RandomForestClassifier(class_weight={0: 0.5512173740112261,
+                                                            1: 5.381156147232458},
+                                              min_samples_leaf=5, verbose=2),
+             iid=False,
+             param_grid={'max_features': ['log2'], 'n_estimators': [2000]},
+             refit='average_precision',
+             scoring=['average_precision', 'precision', 'recall'], verbose=2)
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:40
+
+
+ GENERATING PREDICTIONS FOR FORWARD STRAND SEQUENCES WITH SHAPE: (4639634, 160)
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    1.1s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done 2000 out of 2000 | elapsed: 29.0min finished
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:29:44
+
+
+ GENERATING PREDICTIONS FOR INVERSE STRAND SEQUENCES WITH SHAPE: (4639634, 160)
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[Parallel(n_jobs=1)]: Done   1 out of   1 | elapsed:    1.0s remaining:    0.0s
+[Parallel(n_jobs=1)]: Done 2000 out of 2000 | elapsed: 28.9min finished
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:58:45
+
+
+ PREDICTIONS GENERATED SUCCESSFULLY
+
+
+ FORWARD SEQUENCE SAMPLE:
+        SEQ:
+
+1000010000100001000100010001001010000001000100100001010010000010000101000010100010000010010001000100001010001000000110000001010000010010000100100001010000010100
+        PREDICTION: 0.2877
+
+
+
+ INVERSE SEQUENCE SAMPLE:
+        SEQ: 0010100000101000010010000100100000101000000110000001000101000010001000100100000100010100001010000100000100101000010010001000000101001000100010001000010000100001
+        PREDICTION: 0.2722
+
+
+
+ FORWARD STRAND PREDICTIONS ABOVE THRESHOLD: 27,600 and BELOW: 4,612,034 FROM TOTAL 4,639,634
+
+
+ INVERSE STRAND PREDICTIONS ABOVE THRESHOLD: 27,402 and BELOW: 4,612,232 FROM TOTAL 4,639,634
+
+
+ GENERATING DETECTED PROMOTERS' BED FILE BASED ON THRESHOLD: 0.500 FOR CHROM: NC_000913.2. # SEQS: 4639634 # INV SEQS: 4639634. # SEQS ABOVE THRES: 27600 # INV SEQS ABOVE THRES: 27402
+
+
+ SAVING BED FILE WITH SHAPE (55002, 6) TO results/genome_predictions.csv. SAMPLE:
+
+         chrom start  end    score strand                                  sequence
+0  NC_000913.2    73  112  0.64976      +  TGAACTGGTTACCTGCCGTGAGTAAATTAAAATTTTATTG
+1  NC_000913.2    97  136  0.53367      -  GTTAAAGTATTTAGTGACCTAAGTCAATAAAATTTTAATT
+2  NC_000913.2   108  147  0.59078      +  TATTGACTTAGGTCACTAAATACTTTAACCAATATAGGCA
+3  NC_000913.2   121  160  0.55026      -  TGTCTGTGCGCTATGCCTATATTGGTTAAAGTATTTAGTG
+4  NC_000913.2   122  161  0.53101      -  CTGTCTGTGCGCTATGCCTATATTGGTTAAAGTATTTAGT
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 01:05:27
