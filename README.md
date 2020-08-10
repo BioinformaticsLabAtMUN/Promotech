@@ -7,7 +7,7 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
    - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
    - `bash miniconda.sh`
-2. Install conda environment from the prebuilt environment YAML file. 
+2. Install conda environment from the prebuilt environment YAML file. The environment was made on Ubuntu 20.04, some requirements will require different versions of the packages for different operating systems.
    - `conda env create -f promotech_env.yml`
 3. Activate environment
    - `conda activate promotech_env`
