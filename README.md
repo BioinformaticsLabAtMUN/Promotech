@@ -41,6 +41,15 @@ Description
 
 
 ## Predicting Promoters Examples
+
+The following examples were tested in a desktop computer with the following specifications:
+
+- Processor      : Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz 2.40 GHz 
+- RAM            : 24.0 GB (23.8 GB usable)
+- System Type    : 64-bit Ubuntu 18.04 LTS
+- Graphic Memory : NVIDIA GeForce RTX 2060 6GB GDDR6
+
+
 ### 40 Nucleotide Sequences
 Description
 
@@ -48,14 +57,20 @@ Description
 Description
 
 
-1. Parse the whole genome FASTA File
+1. Parse the whole genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the **--test-samples, -ts** parameter.
 
-`python promotech.py -PG -F examples/genome/ECOLI_2.fasta` 
+`python promotech.py -pg -f  -m RF-HOT examples/genome/ECOLI_2.fasta` 
 
-or smaller number of sequences can be used for testing purposes using the **--test-samples, -TS** parameter.
+or 
 
-`python promotech.py -PG -TS 20000 -F examples/genome/ECOLI_2.fasta` 
+`python promotech.py -pg -ts 20000 -f -m RF-HOT examples/genome/ECOLI_2.fasta` 
 
-2. Predict promoter sequences using the parsed sequences
+- **Note:** Running one of the following commands will use a sliding window of 40nt size and 1nt step, pre-processed the sequences to meet the specified model's input requirement and create two files, **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**, for forward and inverse strand, where MODEL_TYPE specifies the type of model that will later be used for assessing the pre-processed 40nt sequences. **Do not delete the 'results' folder or the '.data' files**, because they will be used in the next step.
+- **Note:** For comparison, the pipeline configured to generate data for the RF-HOT model, took 35 minutes and 42 seconds to cut 4,639,634 forward and 4,639,634 inverse sequences from the *E. coli* (NC_000913.2) genome with 4,639,675 nucleotides in length, pre-processed them to hot-encoded binary format, save them to two binary files and each file was 5.8 GB in size. During this time, it maintained around 18.5/24GB of RAM exclusively for the python running process.
 
-`python promotech.py -G `
+2. Predict promoter sequences using the parsed sequences using `--predict-genome, -g`, assign a threshold using `--threshold, -t`, and select a model using `--model, -m`. The default threshold, and model are 0.5, and RF-HOT, respectively.
+
+`python promotech.py -g -t 0.6`
+
+- **Note:** This commands expects the user to have used the `--parse-genome, -pg` command before to generate the pre-processed sequences from the bacterial genome and stored in the files **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**. 
+- **Note:** For comparison, it took 1 hour, 5 minutes, and 27 seconds to predict both, forward and inverse strand batches, each with 4,639,634 pre-processed sequences, with a total of 9,279,268 sequences as input and an output of 55,002 promoters sequences with a score above the 0.5 threshold.
