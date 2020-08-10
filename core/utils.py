@@ -5,6 +5,7 @@ from skbio import Sequence
 from itertools import product
 import progressbar
 import traceback
+import pickle
 
 def readData(positives_filename, negatives_filename):
   p_df = pd.read_csv(positives_filename, sep='\t', header=None)
@@ -199,7 +200,60 @@ def tetranucleotideToStringSentences(data):
     bar.update(i)
   return tetra_list
 
+def fastaToTetranucletideTable(seqs):
+  tetra_n = list()
+  nucleotide_counter = 0
+  nucleotide_list = ["U","R","Y","N","W","S","M","K","B","H","D","V" ]
+  sequence_arr = np.empty(len(seqs), dtype=object)
+  bar  = progressbar.ProgressBar(max_value=len(seqs))
+  for i, s in enumerate(seqs):
+    if any( nucleotide in s for nucleotide in nucleotide_list ):
+      nucleotide_counter = nucleotide_counter + 1
+      sequence_arr[i] = dict()
+      continue
+    if(len(s) < 40 ):
+      nucleotide_counter = nucleotide_counter + 1
+      sequence_arr[i] = dict()
+      continue
+    seq = Sequence(s).kmer_frequencies(4, overlap=True, relative =True)
+    sequence_arr[i] = seq
+    bar.update(i)
+  data = pd.DataFrame.from_records(sequence_arr)
+  data = data.reindex(columns=all_tetra_subsets()) 
+  data = data.replace(np.nan, 0)
+  return data 
+
 ##############################################################################################################################
+
+def dataConverter( seqs, data_type, tokenizer_path=None, print_fn=print, log_file=None ):
+  if log_file is None:
+    print_fn = print
+    print_fn("\n\n NO LOG FILE SPECIFIED. REDIRECTING OUTPUT TO CONSOLE.", log_file)
+  if data_type == "RF-HOT":
+    data_df = fastaToHotEncodingSequences( seqs )
+    print_fn("\n\n HOT ENCODED SEQUENCES GENERATED SUCCESSFULLY. \n\n".format( ), log_file)
+  elif data_type == "RF-TETRA":
+    print_fn("\n\n NUCLEOTIDES SEQUENCES TO TETRANUCLEOTIDES TABLE. SAMPLE: \n\n{}\n\n".format( seqs[0] ), log_file)
+    data_df = fastaToTetranucletideTable( seqs )
+    print_fn("\n\n TETRA-NUCLEOTIDE SEQUENCES GENERATED SUCCESSFULLY. \n\n".format( ), log_file)
+  elif data_type == "GRU" or data_type == "LSTM" :
+    if( tokenizer_path  != None ):
+      print_fn("\n\n LOADING TOKENIZER: {}".format( tokenizer_path ), log_file)
+      tokenizer          = pickle.load(open( tokenizer_path, 'rb' ))
+      print_fn("\n\n NUCLEOTIDES SEQUENCES TO TETRANUCLEOTIDES. INPUT SAMPLE: \n\n{}".format( seqs[0] ), log_file)
+      tetra_seq_list     = fastaToTetranucleotides( seqs )
+      print_fn("\n\n TETRA-NUCLEOTIDES TO SENTENCES. INPUT SAMPLE: \n\n{}".format( tetra_seq_list.iloc[0, :].values ), log_file)
+      tetra_seq_list_str = tetranucleotideToStringSentences( tetra_seq_list.values )
+      print_fn("\n\n SENTENCES TO RNN TOKENS. INPUT SAMPLE: \n\n{}".format( tetra_seq_list_str[0] ), log_file)
+      data_df            = pd.DataFrame( tokenizer.texts_to_sequences(tetra_seq_list_str) )
+      print_fn("\n\n TOKENS GENERED SUCCESSFULLY. \n\n".format( ), log_file)
+    else:
+      raise ValueError("RNN TOKENIZER PATH {} IS NOT AVAILABLE".format(tokenizer_path), log_file)
+  print_fn( str(data_df.head()), log_file)
+  return data_df
+  
+##############################################################################################################################
+
 def stringToBinaryArray(string):
   tokenArray = list(string)
   result = list()

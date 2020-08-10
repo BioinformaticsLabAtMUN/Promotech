@@ -1,4 +1,4 @@
-import numpy as np, pandas as pd
+import numpy as np, pandas as pd, time
 from io import StringIO
 from Bio import SeqIO
 import joblib, traceback, os, sys
@@ -7,11 +7,11 @@ from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtCore import QRunnable, pyqtSlot, pyqtSignal, QObject, QAbstractTableModel
 Qt = QtCore.Qt
 
-# dir_path = os.path.dirname(os.path.realpath(__file__))
-# print("ADDING PATH: ", "{}/../core".format(dir_path) )
-# sys.path.append("{}/../sequences".format(dir_path))
-# from process_sequences import parseSequences
-# pyuic5 ui/form.ui -o ui/GUI.py
+dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append("{}/../sequences".format(dir_path))
+sys.path.append("{}/../utils".format(dir_path))
+from process_sequences import predictSequencesFromString
+from utils import print_fn
 
 class PandasModel(QAbstractTableModel):
     def __init__(self, data, parent=None):
@@ -81,10 +81,10 @@ class Promotech_UI(QWidget):
         self.predict_seqs_fn = predict_seqs_fn
         self.predict_gen_fn    = predict_gen_fn
         # LOAD MODEL IN PARALLEL THREAD
-        new_job         = ParrallelJob(fn=self.load_model)
-        self.threadpool = QtCore.QThreadPool()
-        self.threadpool.start(new_job)
-        new_job.signals.result.connect(self.prepare_model)
+        # new_job         = ParrallelJob(fn=self.load_model)
+        # self.threadpool = QtCore.QThreadPool()
+        # self.threadpool.start(new_job)
+        # new_job.signals.result.connect(self.prepare_model)
 
     def load_ui(self):
         self.window = uic.loadUi(self.ui_path, self)
@@ -105,6 +105,8 @@ class Promotech_UI(QWidget):
         # SET SLOTS & EVENTS
         #self.genome_radio_button.toggled.connect(self.set_genome_prediction_view)
         self.sequences_radio_button.toggled.connect(self.set_sequence_prediction_view)
+        self.results_radio_button.toggled.connect(self.set_results_view)
+        self.console_radio_button.toggled.connect(self.set_console_view)
         self.sequences_predict_push_button.clicked.connect(self.predict_sequences)
         self.sequences_browse_push_button.clicked.connect(self.browse_sequences_file)
 
@@ -117,13 +119,10 @@ class Promotech_UI(QWidget):
         self.lock_widget(self.sequences_stacked_widget, False)
         self.progress_bar.setRange(0, 0)
         self.progress_bar.setValue(0)
-        model_path = '{}/{}/{}'.format(
-            dir_path,
-            "../models/",
-            self.model_file_name
-        )
+        model_path = os.path.join(dir_path, "../models/", self.model_file_name ) 
         self.update_message_label("LOADING MODEL...")
         model = joblib.load(model_path)
+        self.update_message_label("MODEL LOADED SUCCESSFULLY...")
         return model
     def prepare_model(self, model):
         self.lock_widget(self.sequences_stacked_widget, True)
@@ -138,49 +137,67 @@ class Promotech_UI(QWidget):
     def set_sequence_prediction_view(self, trigger):
         if(trigger):
             self.sequences_stacked_widget.setCurrentIndex(0)
-            self.update_message_label("SET TO 40-NT SEQUENCES PREDICTION MODE.")
+            # self.update_message_label("SET TO 40-NT SEQUENCES PREDICTION MODE.")
             self.progress_bar.setValue(0)
     def set_genome_prediction_view(self, trigger):
         if(trigger):
             self.sequences_stacked_widget.setCurrentIndex(1)
-            self.update_message_label("SET TO GENOME PREDICTION MODE.")
+            # self.update_message_label("SET TO GENOME PREDICTION MODE.")
             self.progress_bar.setValue(0)
     def set_console_view(self, trigger):
         if(trigger):
             self.sequences_stacked_widget.setCurrentIndex(2)
-            self.update_message_label("SET TO CONSOLE VIEW.")
+            # self.update_message_label("SET TO CONSOLE VIEW.")
     def set_results_view(self, trigger):
         if(trigger):
             self.sequences_stacked_widget.setCurrentIndex(3)
-            self.update_message_label("SET TO RESULTS VIEW.")
-    def predict_sequences(self, print_fn=print):
-        if self.predict_seqs_fn is None:
-            print_fn("ERROR: PREDICTION FUNCTION NOT AVAILABLE.")
-            return
-        if self.preprocess_seqs_fn is None:
-            print_fn("ERROR: PREPROCESSING FUNCTION NOT AVAILABLE.")
-            return
+            # self.update_message_label("SET TO RESULTS VIEW.")
+    def update_results_table( self, chroms, seqs, y_pred , prepro_seqs):
+        df = pd.DataFrame([], columns = ['chroms', 'sequences', 'preprocessed_sequences', 'predictions', 'observation'])
+        df["chroms"] = chroms
+        df["sequences"] = seqs
+        df["preprocessed_sequences"] = [ "".join(map(str, row)) for row in prepro_seqs.values ]
+        df["predictions"] = y_pred
+        df["observation"] = [ "PROMOTER (>= 0.5)" if pred >= 0.5 else "NON-PROMOTER (< 0.5)" for pred in y_pred ]
 
+        self.sequences_stacked_widget.setCurrentIndex(3)
+        self.results_radio_button.setChecked(True)
+        self.results_model = PandasModel(data=df, parent=self)
+        self.results_table_view.setModel(self.results_model)
+        header = self.results_table_view.horizontalHeader()
+        header_width_formats = [
+            QtWidgets.QHeaderView.ResizeToContents, QtWidgets.QHeaderView.ResizeToContents,
+            QtWidgets.QHeaderView.Interactive, QtWidgets.QHeaderView.ResizeToContents,
+            QtWidgets.QHeaderView.ResizeToContents
+        ]
+        # header_width_formats = [ QtWidgets.QHeaderView.Interactive ] * len(df.columns)
+        for i in range(len(df.columns)):
+            header.setSectionResizeMode(i, header_width_formats[i] )
+            
+    def start_multi_thread_prediction(self):
         seqs_content      = self.sequences_text_edit.toPlainText()
-        seqs_str          = StringIO(seqs_content)
-        self.parsed_seqs  = SeqIO.parse(seqs_str, "fasta")
-        self.seqs         = np.array([ {"id": s.id, "seq": str(s.seq)} for s in self.parsed_seqs ])
-        self.chroms       = [ s["id"]  for s in self.seqs ]
-        self.raw_seqs     = [ s["seq"] for s in self.seqs ]
-
-        if len(self.raw_seqs) == 0:
-            print_fn("ERROR: NO SEQUENCES TO PREDICT.")
-            return
-
-        self.update_message_label( "GENERATING PREDICTION FOR {} SEQUENCES".format( len(self.raw_seqs) ) )
-        self.lock_widget(self.sequences_stacked_widget, False)
-        self.progress_bar.setRange(0, 0)
-        self.prepro_seqs = self.preprocess_seqs_fn(self.raw_seqs)
-        self.y_pred      = self.predict_seqs_fn( seqs=self.prepro_seqs, model=self.model )
+        self.chroms, self.raw_seqs, self.y_pred, self.prepro_seqs = predictSequencesFromString(
+            seqs_content, 
+            print_fn=self.update_console, 
+            out_dir="results", 
+            threshold=0.5, 
+            model_type="RF-HOT" , 
+            log_file="./results/gui_prediction.log.txt", 
+            start_time=time.time()
+        )
         self.progress_bar.setRange(0, 100)
-        self.lock_widget(self.sequences_stacked_widget, True)
-        self.update_results_table()
-        self.update_message_label( "PROMOTER PREDICTIONS SCORES GENERATED SUCCESSFULLY. CHECK THE RESULTS TAB FOR MORE INFORMATION.".format( len(self.raw_seqs) ) )
+        # self.lock_widget(self.sequences_stacked_widget, True)
+        self.update_results_table( self.chroms, self.raw_seqs, self.y_pred , self.prepro_seqs )
+        # self.update_message_label( "PROMOTER PREDICTIONS SCORES GENERATED SUCCESSFULLY. X_INV THE RESULTS TAB FOR MORE INFORMATION.".format( len(self.raw_seqs) ) )
+    def predict_sequences(self, print_fn=print):
+        self.sequences_stacked_widget.setCurrentIndex(2)
+        self.console_radio_button.setChecked(True)
+        # self.lock_widget(self.sequences_stacked_widget, False)
+        self.progress_bar.setRange(0, 0)
+        new_job         = ParrallelJob(fn=self.start_multi_thread_prediction)
+        self.threadpool = QtCore.QThreadPool()
+        self.threadpool.start(new_job)
+        
     def browse_sequences_file(self):
         self.sequences_file_path = QFileDialog.getOpenFileName(
             parent=self,
@@ -199,27 +216,9 @@ class Promotech_UI(QWidget):
         pass
     def update_message_label(self, msg):
         self.message_label.setText(msg)
-    def update_results_table( self ):
-        df = pd.DataFrame([], columns = ['chroms', 'sequences', 'preprocessed_sequences', 'predictions', 'observation'])
-        df["chroms"] = self.chroms
-        df["sequences"] = self.raw_seqs
-        df["preprocessed_sequences"] = [ "".join(map(str, row)) for row in self.prepro_seqs.values ]
-        df["predictions"] = self.y_pred
-        df["observation"] = [ "PROMOTER (>= 0.5)" if pred >= 0.5 else "NON-PROMOTER (< 0.5)" for pred in self.y_pred ]
-
-        self.sequences_stacked_widget.setCurrentIndex(3)
-        self.results_radio_button.setChecked(True)
-        self.results_model = PandasModel(data=df, parent=self)
-        self.results_table_view.setModel(self.results_model)
-        header = self.results_table_view.horizontalHeader()
-        header_width_formats = [
-            QtWidgets.QHeaderView.ResizeToContents, QtWidgets.QHeaderView.ResizeToContents,
-            QtWidgets.QHeaderView.Fixed, QtWidgets.QHeaderView.ResizeToContents,
-            QtWidgets.QHeaderView.ResizeToContents
-        ]
-        for i in range(len(df.columns)):
-            header.setSectionResizeMode(i, header_width_formats[i] )
-    def update_console(self, msg ):
+    
+    def update_console(self, msg, log_file ):
+        print(msg)
         self.console_text_edit.insertPlainText( msg );
 
 
