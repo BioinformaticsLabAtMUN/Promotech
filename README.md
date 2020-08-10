@@ -32,6 +32,7 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
    - The **mandatory** argument used with this command is `-f, --fasta`. 
    - Make sure that the FASTA file has only 40-nt sequences as shown in the example below. If you require to use longer sequences, use the `-pg, --parse-genome` and `-g, --predict-genome` commands.
   <br />
+  
   ```
     >chrom1
     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
