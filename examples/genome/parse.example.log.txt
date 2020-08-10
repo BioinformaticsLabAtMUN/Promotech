@@ -1,0 +1,121 @@
+>>  clear && python promotech.py -pg -m RF-HOT -f examples/genome/ECOLI_2.fasta
+
+2020-08-10 15:18:49.907717: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
+2020-08-10 15:18:49.908428: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
+2020-08-10 15:18:49.908607: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+
+          PROMOTECH
+          MODE         : COMMAND-LINE
+          ML MODEL     : FASTA FILE
+          INPUT TYPE   : RF-HOT
+          INPUT        : ['examples/genome/ECOLI_2.fasta']
+          TEST SAMPLES : None
+
+
+
+ CREATING OUTPUT FOLDER: results
+
+
+ PRINTING CONTENT
+1. GENOME: NC_000913.2 - LENGTH: 4639675
+
+
+ JOINING ALL CHROMS AND SEQS INTO A SINGLE FOR TETRA-NUCLEOTIDE SLIDING WINDOW
+
+
+ JOINED GENOME: NC_000913.2 - LENGTH: 4,639,675
+
+
+ GENERATING PROMOTER SEQUENCES WITH WINDOW-SIZE: 40 AND STEP: 1. EXPECTED SAMPLES: 4,639,634
+
+
+100% (4639634 of 4639634) |###########################################################################################################################################################################| Elapsed Time: 0:00:10 Time:  0:00:10
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:00:13
+
+
+ CUTTED 40 NT SEQUENCES GENERATED SUCCESSFULLY. # OF SAMPLES: 4,639,634 = (4639634,).
+        SAMPLE #1: AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTG
+        SAMPLE #2: GCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGT
+
+
+ CONVERTING 4639634 CUTTED 40 NT SEQUENCES TO RF-HOT SEQUENCES USING MAPPING VALUES
+
+        [{'A': array([1., 0., 0., 0.])}, {'G': array([0., 1., 0., 0.])}, {'C': array([0., 0., 1., 0.])}, {'T': array([0., 0., 0., 1.])}]
+
+
+ CONVERTING DATA
+ 99% (4639434 of 4639634) |########################################################################################################################################################################## | Elapsed Time: 0:14:41 ETA:   0:00:00
+
+ HOT ENCODED SEQUENCES GENERATED SUCCESSFULLY.
+
+
+   A  G  C  T  A  ...  T  A  G  C  T
+0  1  0  0  0  0  ...  1  0  1  0  0
+1  0  1  0  0  0  ...  0  0  0  0  1
+2  0  0  1  0  0  ...  1  0  1  0  0
+3  0  0  0  1  0  ...  0  0  1  0  0
+4  0  0  0  1  0  ...  0  1  0  0  0
+
+[5 rows x 160 columns]
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:16:37
+
+
+ RF-HOT SEQUENCES GENERATED SUCCESSFULLY. OUTPUT DATAFRAME SHAPE: (4639634, 160)
+
+
+ SAMPLE:
+
+   A  G  C  T  A  ...  T  A  G  C  T
+0  1  0  0  0  0  ...  1  0  1  0  0
+1  0  1  0  0  0  ...  0  0  0  0  1
+2  0  0  1  0  0  ...  1  0  1  0  0
+3  0  0  0  1  0  ...  0  0  1  0  0
+4  0  0  0  1  0  ...  0  1  0  0  0
+
+[5 rows x 160 columns]
+
+
+ SAVING FORWARD STRAND HOT-ENCODED SEQUENCES TO BINARY FILE USING JOBLIB TO: results/RF-HOT.data
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:17:32
+
+
+ FILE SAVED SUCCESSFULLY AT:
+        results/RF-HOT.data
+
+
+ GENERATING INVERSE STRAND SEQUENCES. 
+100% (4639634 of 4639634) |###########################################################################################################################################################################| Elapsed Time: 0:00:24 Time:  0:00:24
+
+
+ INVERSE STRAND SEQUENCES GENERATED SUCCESSFULLY. # OF SAMPLES: 4,639,634.
+        SAMPLE:
+                ORIGINAL : AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTG 
+                INVERSE  : CACAGAGACATATTGCCCGTTGCAGTCAGAATGAAAAGCT
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:17:59
+
+
+ CONVERTING 4639634 INVERSE STRAND 40 NT SEQUENCES TO RF-HOT SEQUENCES USING MAPPING VALUES
+
+        [{'A': array([1., 0., 0., 0.])}, {'G': array([0., 1., 0., 0.])}, {'C': array([0., 0., 1., 0.])}, {'T': array([0., 0., 0., 1.])}]
+
+
+ CONVERTING INVERSE DATA
+ 99% (4639235 of 4639634) |########################################################################################################################################################################## | Elapsed Time: 0:14:46 ETA:   0:00:00
+
+ HOT ENCODED SEQUENCES GENERATED SUCCESSFULLY.
+
+
+   A  G  C  T  A  ...  T  A  G  C  T
+0  0  0  1  0  1  ...  0  0  0  0  1
+1  1  0  0  0  0  ...  0  0  0  1  0
+2  0  0  1  0  1  ...  0  0  1  0  0
+3  0  0  1  0  0  ...  0  1  0  0  0
+4  0  0  0  1  0  ...  0  1  0  0  0
+
+[5 rows x 160 columns]
+
+         TIME ELAPSED FROM START (HOUR:MIN:SEC): 00:35:42
