@@ -10,3 +10,4 @@ models/RF-HOT.model
 *.model
 *.pyc
 *.pyc
+ui/__pycache__/GUI.cpython-36.pyc
