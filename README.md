@@ -17,13 +17,13 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 ## Commands
 
 1. `-v, --version` - Print Promotech's latest version.
-2. `-gui, --gui`   - Use the interactive GUI interface for predicting 40 nucleotide sequences. The interface do not work for whole genome prediction.
-3. `-f, --fasta`   - Specify the location of the sequences or whole genome FASTA file location in disk. This command is used together with the `-s, --predict-sequences` or `-PG, --parse-genome` arguments.
+2. `-gui, --gui`   - Use the interactive GUI interface for predicting 40 nucleotide sequences. The interface does not work for whole-genome prediction.
+3. `-f, --fasta`   - Specify the location of the sequences or whole-genome FASTA file location in disk. This command is used together with the `-s, --predict-sequences` or `-PG, --parse-genome` arguments.
 4. `-m, --model` - Indicates the type of model used for prediction and the target output data type used during the genome parsing stage. The default value is `RF-HOT`.
    - The available options for **40nt sequences prediction** are `RF-HOT`, `RF-TETRA`, `GRU`, `LSTM`. 
-   - The available options for **whole genome parsing and prediction** are `RF-HOT`, `GRU`, `LSTM`. 
-5. `-ts, --test-samples` - Used for testing purposes during the genome parsing stage. A whole genome can be made of 4 million+ nucleotides and can take hours, depending of your system configuration to parse and predict. This command limits the number of sequences the sliding window cuts from the genome. It is used only with the `-pg, --parse-genome` argument.
-5. `-pg, --parse-genome` - Use a sliding window to cut 40 nucleotide sequences from the whole genome in forward and reverse strand. The files are then saved to the "results" folder with a ".data" format and with the name of the model type, i.e. "RF-HOT.data" and "RF-HOT-INV.data". 
+   - The available options for **whole-genome parsing and prediction** are `RF-HOT`, `GRU`, `LSTM`. 
+5. `-ts, --test-samples` - Used for testing purposes during the genome parsing stage. A whole-genome can be made of 4 million+ nucleotides and can take hours, depending on your system configuration to parse and predict. This command limits the number of sequences the sliding window cuts from the genome. It is used only with the `-pg, --parse-genome` argument.
+5. `-pg, --parse-genome` - Use a sliding window to cut 40 nucleotide sequences from the whole-genome in forward and reverse strand. The files are then saved to the "results" folder with a "[MODEL-TYPE].data" format, where MODEL-TYPE is the name of the model's desired input format, i.e. "RF-HOT.data" and "RF-HOT-INV.data". 
    - The **mandatory** argument used with this command is `-f, --fasta`. 
    - The **optional** arguments used with this command are `-m, --model`, and `--ts, --test-samples`. 
 6. `-g, --predict-genome` -  This command uses the files generated using the `-pg, --parse-genome` argument and located in the "results" folder. 
@@ -59,9 +59,9 @@ The following examples were tested in a desktop computer with the following spec
 
 `clear && python promotech.py -s -f examples/sequences/test.fasta -m "RF-HOT"`
 
-### Whole Genome
+### Whole-Genome
 
-1. Parse the whole genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the **--test-samples, -ts** parameter.
+1. Parse the whole-genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the **--test-samples, -ts** parameter.
 
 `python promotech.py -pg -f  -m RF-HOT examples/genome/ECOLI_2.fasta` 
 
@@ -76,5 +76,5 @@ or
 
 `python promotech.py -g -t 0.6`
 
-- **Note:** This commands expects the user to have used the `--parse-genome, -pg` command before to generate the pre-processed sequences from the bacterial genome and stored in the files **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**. 
+- **Note:** This command expects the user to have used the `--parse-genome, -pg` command before to generate the pre-processed sequences from the bacterial genome and stored in the files **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**. 
 - **Note:** For comparison, it took 1 hour, 5 minutes, and 27 seconds to predict both, forward and inverse strand batches, each with 4,639,634 pre-processed sequences, with a total of 9,279,268 sequences as input and an output of 55,002 promoters sequences with a score above the 0.5 threshold.
