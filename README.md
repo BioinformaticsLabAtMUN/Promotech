@@ -1,9 +1,9 @@
 # Promotech
 
-Description
+Finding the location of bacterial promoter se-quences is essential for microbiology since promoters play a central role in regulating gene expression.  There are several tools to recognize promoters in bacterial genomes; however,  most  of  them  were  trained  on  data  from  a  single  bacterium  or  a  specific set of sigma factors.  Promotech was developed to overcome this limitation, offering a machine-learning-based classifier trained to generate a model that generalizes and detects promoters in a wide range of bacterial species.  During the study, two model architectures  were  tested,  Random  Forest  and  Recurrent  Networks. The  Random Forest model, trained with promoter sequences with a binary encoded representationof  each  nucleotide,  achieved  the  highest  performance  across  nine  different  bacteria and was able to work with short 40bp sequences and entire bacterial genomes using asliding window.  The selected model was evaluated on a validation set of four bacteria not used during training, having 50% positive and 50% negative promoter sequences resulting  in  an  average  AUPRC  of  0.73±0.13  and  an  AUROC  of  0.71±0.13.   TheRandom Forest model achieved an average AUPRC and AUROC across the validation set’s entire genomes of 0.14±0.1 and 0.71±0.17,  but increased its performanceto 0.75±0.18 AUPRC and 0.90±0.06 AUROC when it was configured to detect promoter clusters.  Promotech was compared against state-of-the-art bacterial promoter detection programs using the balanced data set and outperformed these methods.
 
 ## Requirements
-Description
+
 1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
    - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
    - `bash miniconda.sh`
@@ -11,6 +11,8 @@ Description
    - `conda env create -f promotech_env.yml`
 3. Activate environment
    - `conda activate promotech_env`
+
+**Note:** A minimum of 24 GB of RAM memory is recommended to run the RF-HOT, LSTM, and GRU model on an entire genome. Parsing an entire genome to the RF-TETRA model's input format can produce the python "Memory Error" due to the high complexity and high RAM-memory demand required to obtain the tetra-nucleotide frequencies for millions of sequences in forward and inverse strand. An example of this process is shown in the examples section below. All models can run on lower-end systems, with at least 8GB of RAM, when predicting FASTA files with hundreds or thousands of sequences, 40 nt in length. 
 
 ## Commands
 
@@ -29,7 +31,8 @@ Description
 7. `-s, --predict-sequences` - Used to parse and predict 40nt sequences from a FASTA file.
    - The **mandatory** argument used with this command is `-f, --fasta`. 
    - Make sure that the FASTA file has only 40-nt sequences as shown in the example below. If you require to use longer sequences, use the `-pg, --parse-genome` and `-g, --predict-genome` commands.
-   ```
+  <br />
+  ```
     >chrom1
     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     >chrom2
@@ -51,11 +54,11 @@ The following examples were tested in a desktop computer with the following spec
 
 
 ### 40 Nucleotide Sequences
-Description
+1. Parse and predict using the `--predict-sequence, -s` command and specify the FASTA file using `--fasta, -f`. The FASTA file should only include 40nt sequences. If you require to predict longer sequences, use the "whole-genome" commands.
+
+`clear && python promotech.py -s -f examples/sequences/test.fasta -m "RF-HOT"`
 
 ### Whole Genome
-Description
-
 
 1. Parse the whole genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the **--test-samples, -ts** parameter.
 
