@@ -13,7 +13,7 @@ Finding the location of bacterial promoter se-quences is essential for microbiol
 3. Activate environment
    - `conda activate promotech_env`
 
-**Note:** A minimum of 24 GB of RAM memory is recommended to run the RF-HOT, LSTM, and GRU model on an whole-genome. Parsing an whole-genome to the RF-TETRA model's input format can produce the python "Memory Error" due to the high complexity and high RAM-memory demand required to obtain the tetra-nucleotide frequencies for millions of sequences in forward and inverse strand. An example of this process is shown in the examples section below. All models can run on lower-end systems, with at least 8GB of RAM, when predicting FASTA files with hundreds or thousands of sequences, 40 nt in length. 
+**Note:** A minimum of 24 GB of RAM memory is recommended to run the RF-HOT, LSTM, and GRU model on a whole-genome. Parsing a whole-genome to the RF-TETRA model's input format can produce the python "Memory Error" due to the high complexity and high RAM-memory demand required to obtain the tetra-nucleotide frequencies for millions of sequences in forward and inverse strand. An example of this process is shown in the examples section below. All models can run on lower-end systems, with at least 8GB of RAM, when predicting FASTA files with hundreds or thousands of sequences, 40 nt in length. 
 
 The examples in the section below were tested in a desktop computer with the following specifications:
 
