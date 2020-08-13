@@ -54,7 +54,7 @@ The examples in the section below were tested in a desktop computer with the fol
 
 
 
-## Predicting Promoters Examples
+## Examples
 
 ### 40 Nucleotide Sequences
 1. Parse and predict using the `--predict-sequence, -s` command and specify the FASTA file using `--fasta, -f`. The FASTA file should only include 40nt sequences. If you require to predict longer sequences, use the "whole-genome" commands. An example of the command-line output obtained when running this command is found [HERE](examples/sequences/example.log.txt)
