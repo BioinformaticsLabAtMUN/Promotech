@@ -149,6 +149,9 @@ Source code: http://flagshipnt.erc.monash.edu/MULTiPly/ (Not working)
 
 Article: https://academic.oup.com/bioinformatics/article/35/17/2957/5288244
 
-TBA
+- Download and install the latest version of Matlab. https://uk.mathworks.com/downloads/web_downloads/
+- `cd models/preceding/multiply`
+- Edit the `MULTiPLy.md` file and change the 12th line, `[head,seq]=fastaread('sample.fasta');`, with the fasta file you want to test. You can use `sample.fasta` for testing.
+- Run the `MULTiPLy.md` file from the Matlab's GUI command line.
 
          
