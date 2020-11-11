@@ -1,0 +1,342 @@
+    "RUNNING "    "MYCOBACTER"    "CLOSTRIDIUM"    "RHODOBACTER_1"    "RHODOBACTER_2"    "BACILLUS"
+
+___________________LOAD DATA FOR MYCOBACTER___________________
+
+X: data/MYCOBACTER/X.mat
+Y: data/MYCOBACTER/Y.mat
+SHAPES: 
+
+CHROM SHAPE: (1  8032) 
+SEQ SHAPE: (1  8032) 
+LABELS: (1  8032) 
+
+SAMPLES: 
+
+CHROM: NC_008596.1:5734081-5734121(+) 
+SEQ: GGCGTTGATCTGGTTGATCACCTCACGCGCGGCGTTCTGC 
+LABEL: 0 
+
+X: (8032   165) 
+Y: (8032     1) 
+___________________LOAD MODEL___________________
+
+    Parameters: [5×1 double]
+      nr_class: 2
+       totalSV: 1855
+           rho: 1.2606
+         Label: [2×1 double]
+    sv_indices: [1855×1 double]
+         ProbA: -1.5578
+         ProbB: -0.0342
+           nSV: [2×1 double]
+       sv_coef: [1855×1 double]
+           SVs: [1855×165 double]
+
+___________________PREDICT___________________
+
+Model supports probability estimates, but disabled in predicton.
+Accuracy = 4.96763% (399/8032) (classification)
+CHROMS SHAPE: (1  8032) SAMPLE: NC_008596.1:5734081-5734121(+)          
+SEQS   SHAPE: (1  8032) SAMPLE: GGCGTTGATCTGGTTGATCACCTCACGCGCGGCGTTCTGC          
+X      SHAPE: (8032   165) SAMPLE: 0.45455          
+Y      SHAPE: (8032     1) SAMPLE: 0          
+Y_PRED     SHAPE: (8032     1) SAMPLE: 0      
+ACC        SHAPE: (3  1) SAMPLE: 4.9676      
+DEC VALUES SHAPE: (3  1) dec_values: 4.9676  
+___________________SAVING RESULTS TO data/MYCOBACTER/RESULTS.csv___________________
+
+CONFUSION MATRIX. Y AXIS = TRUE, X AXIS = PREDICTED
+        3809         169
+        3655         399
+
+
+
+TP: 3809 
+FN: 169 
+FP: 3655 
+TN: 399 
+
+
+
+PRE: 0.51032 
+REC: 0.95752 
+TPR: 0.95752 
+FPR: 0.90158 
+ACC: 0.50473 
+F1 :  0.66579 
+MCC: 0.1091 
+
+___________________LOAD DATA FOR CLOSTRIDIUM___________________
+
+X: data/CLOSTRIDIUM/X.mat
+Y: data/CLOSTRIDIUM/Y.mat
+SHAPES: 
+
+CHROM SHAPE: (1  2364) 
+SEQ SHAPE: (1  2364) 
+LABELS: (1  2364) 
+
+SAMPLES: 
+
+CHROM: NC_010001.1:3515375-3515415(-) 
+SEQ: CGATTAATTTTTCTATCGTAGGTAGGGCAAATCGCATCGA 
+LABEL: 0 
+
+X: (2364   165) 
+Y: (2364     1) 
+___________________LOAD MODEL___________________
+
+    Parameters: [5×1 double]
+      nr_class: 2
+       totalSV: 1855
+           rho: 1.2606
+         Label: [2×1 double]
+    sv_indices: [1855×1 double]
+         ProbA: -1.5578
+         ProbB: -0.0342
+           nSV: [2×1 double]
+       sv_coef: [1855×1 double]
+           SVs: [1855×165 double]
+
+___________________PREDICT___________________
+
+Model supports probability estimates, but disabled in predicton.
+Accuracy = 24.4501% (578/2364) (classification)
+CHROMS SHAPE: (1  2364) SAMPLE: NC_010001.1:3515375-3515415(-)          
+SEQS   SHAPE: (1  2364) SAMPLE: CGATTAATTTTTCTATCGTAGGTAGGGCAAATCGCATCGA          
+X      SHAPE: (2364   165) SAMPLE: 0.72727          
+Y      SHAPE: (2364     1) SAMPLE: 0          
+Y_PRED     SHAPE: (2364     1) SAMPLE: 0      
+ACC        SHAPE: (3  1) SAMPLE: 4.9676      
+DEC VALUES SHAPE: (3  1) dec_values: 24.4501  
+___________________SAVING RESULTS TO data/CLOSTRIDIUM/RESULTS.csv___________________
+
+CONFUSION MATRIX. Y AXIS = TRUE, X AXIS = PREDICTED
+   571   606
+   609   578
+
+
+
+TP: 571 
+FN: 606 
+FP: 609 
+TN: 578 
+
+
+
+PRE: 0.4839 
+REC: 0.48513 
+TPR: 0.48513 
+FPR: 0.51306 
+ACC: 0.50212 
+F1 :  0.48451 
+MCC: -0.027926 
+
+___________________LOAD DATA FOR RHODOBACTER_1___________________
+
+X: data/RHODOBACTER_1/X.mat
+Y: data/RHODOBACTER_1/Y.mat
+SHAPES: 
+
+CHROM SHAPE: (1  10581) 
+SEQ SHAPE: (1  10581) 
+LABELS: (1  10581) 
+
+SAMPLES: 
+
+CHROM: NC_014034.1:762652-762692(+) 
+SEQ: CGGGTCAAGTTCTCCACGGGTGGGATGAGCCCCTCGTGGT 
+LABEL: 1 
+
+X: (10581    165) 
+Y: (10581      1) 
+___________________LOAD MODEL___________________
+
+    Parameters: [5×1 double]
+      nr_class: 2
+       totalSV: 1855
+           rho: 1.2606
+         Label: [2×1 double]
+    sv_indices: [1855×1 double]
+         ProbA: -1.5578
+         ProbB: -0.0342
+           nSV: [2×1 double]
+       sv_coef: [1855×1 double]
+           SVs: [1855×165 double]
+
+___________________PREDICT___________________
+
+Model supports probability estimates, but disabled in predicton.
+Accuracy = 4.24346% (449/10581) (classification)
+CHROMS SHAPE: (1  10581) SAMPLE: NC_014034.1:762652-762692(+)          
+SEQS   SHAPE: (1  10581) SAMPLE: CGGGTCAAGTTCTCCACGGGTGGGATGAGCCCCTCGTGGT          
+X      SHAPE: (10581    165) SAMPLE: 0.45455          
+Y      SHAPE: (10581      1) SAMPLE: 1          
+Y_PRED     SHAPE: (10581      1) SAMPLE: 0      
+ACC        SHAPE: (3  1) SAMPLE: 4.9676      
+DEC VALUES SHAPE: (3  1) dec_values: 4.2435  
+___________________SAVING RESULTS TO data/RHODOBACTER_1/RESULTS.csv___________________
+
+CONFUSION MATRIX. Y AXIS = TRUE, X AXIS = PREDICTED
+        4973         234
+        4925         449
+
+
+
+TP: 4973 
+FN: 234 
+FP: 4925 
+TN: 449 
+
+
+
+PRE: 0.50242 
+REC: 0.95506 
+TPR: 0.95506 
+FPR: 0.91645 
+ACC: 0.50789 
+F1 :  0.65846 
+MCC: 0.078554 
+
+___________________LOAD DATA FOR RHODOBACTER_2___________________
+
+X: data/RHODOBACTER_2/X.mat
+Y: data/RHODOBACTER_2/Y.mat
+SHAPES: 
+
+CHROM SHAPE: (1  7963) 
+SEQ SHAPE: (1  7963) 
+LABELS: (1  7963) 
+
+SAMPLES: 
+
+CHROM: NC_014034.1:2374117-2374157(+) 
+SEQ: GACCATCGCAACGCCGACGGCGGCGCTGAAATTGTCCTGC 
+LABEL: 0 
+
+X: (7963   165) 
+Y: (7963     1) 
+___________________LOAD MODEL___________________
+
+    Parameters: [5×1 double]
+      nr_class: 2
+       totalSV: 1855
+           rho: 1.2606
+         Label: [2×1 double]
+    sv_indices: [1855×1 double]
+         ProbA: -1.5578
+         ProbB: -0.0342
+           nSV: [2×1 double]
+       sv_coef: [1855×1 double]
+           SVs: [1855×165 double]
+
+___________________PREDICT___________________
+
+Model supports probability estimates, but disabled in predicton.
+Accuracy = 4.7344% (377/7963) (classification)
+CHROMS SHAPE: (1  7963) SAMPLE: NC_014034.1:2374117-2374157(+)          
+SEQS   SHAPE: (1  7963) SAMPLE: GACCATCGCAACGCCGACGGCGGCGCTGAAATTGTCCTGC          
+X      SHAPE: (7963   165) SAMPLE: 0.45455          
+Y      SHAPE: (7963     1) SAMPLE: 0          
+Y_PRED     SHAPE: (7963     1) SAMPLE: 0      
+ACC        SHAPE: (3  1) SAMPLE: 4.9676      
+DEC VALUES SHAPE: (3  1) dec_values: 4.7344  
+___________________SAVING RESULTS TO data/RHODOBACTER_2/RESULTS.csv___________________
+
+CONFUSION MATRIX. Y AXIS = TRUE, X AXIS = PREDICTED
+        3746         172
+        3668         377
+
+
+
+TP: 3746 
+FN: 172 
+FP: 3668 
+TN: 377 
+
+
+
+PRE: 0.50526 
+REC: 0.9561 
+TPR: 0.9561 
+FPR: 0.9068 
+ACC: 0.50797 
+F1 :  0.66114 
+MCC: 0.097284 
+
+___________________LOAD DATA FOR BACILLUS___________________
+
+X: data/BACILLUS/X.mat
+Y: data/BACILLUS/Y.mat
+SHAPES: 
+
+CHROM SHAPE: (1  2119) 
+SEQ SHAPE: (1  2119) 
+LABELS: (1  2119) 
+
+SAMPLES: 
+
+CHROM: CP002927.1:2362306-2362346(+) 
+SEQ: CGCCGGTGCATAAATAATTTATATTTATACAAACCCAATA 
+LABEL: 0 
+
+X: (2119   165) 
+Y: (2119     1) 
+___________________LOAD MODEL___________________
+
+    Parameters: [5×1 double]
+      nr_class: 2
+       totalSV: 1855
+           rho: 1.2606
+         Label: [2×1 double]
+    sv_indices: [1855×1 double]
+         ProbA: -1.5578
+         ProbB: -0.0342
+           nSV: [2×1 double]
+       sv_coef: [1855×1 double]
+           SVs: [1855×165 double]
+
+___________________PREDICT___________________
+
+Model supports probability estimates, but disabled in predicton.
+Accuracy = 26.3332% (558/2119) (classification)
+CHROMS SHAPE: (1  2119) SAMPLE: CP002927.1:2362306-2362346(+)          
+SEQS   SHAPE: (1  2119) SAMPLE: CGCCGGTGCATAAATAATTTATATTTATACAAACCCAATA          
+X      SHAPE: (2119   165) SAMPLE: 1          
+Y      SHAPE: (2119     1) SAMPLE: 0          
+Y_PRED     SHAPE: (2119     1) SAMPLE: 1      
+ACC        SHAPE: (3  1) SAMPLE: 4.9676      
+DEC VALUES SHAPE: (3  1) dec_values: 26.3332  
+___________________SAVING RESULTS TO data/BACILLUS/RESULTS.csv___________________
+
+CONFUSION MATRIX. Y AXIS = TRUE, X AXIS = PREDICTED
+   786   269
+   506   558
+
+
+
+TP: 786 
+FN: 269 
+FP: 506 
+TN: 558 
+
+
+
+PRE: 0.60836 
+REC: 0.74502 
+TPR: 0.74502 
+FPR: 0.47556 
+ACC: 0.50212 
+F1 :  0.66979 
+MCC: 0.27619 
+
+___________________SUMMARY___________________
+
+       BACTERIA         TP     FN      FP     TN       PRE        REC        TPR        FPR        ACC        F1          MCC   
+    _______________    ____    ___    ____    ___    _______    _______    _______    _______    _______    _______    _________
+
+    "MYCOBACTER"       3809    169    3655    399    0.51032    0.95752    0.95752    0.90158    0.50473    0.66579       0.1091
+    "CLOSTRIDIUM"       571    606     609    578     0.4839    0.48513    0.48513    0.51306    0.50212    0.48451    -0.027926
+    "RHODOBACTER_1"    4973    234    4925    449    0.50242    0.95506    0.95506    0.91645    0.50789    0.65846     0.078554
+    "RHODOBACTER_2"    3746    172    3668    377    0.50526     0.9561     0.9561     0.9068    0.50797    0.66114     0.097284
+    "BACILLUS"          786    269     506    558    0.60836    0.74502    0.74502    0.47556    0.50212    0.66979      0.27619

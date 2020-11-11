@@ -1,0 +1,57 @@
+_______________________LOADING TRAINING FEATURES_______________________
+    "TRAIN SHAPE: ("    "5720"    "165"    ") \nSAMPLE: "    "0.45455"    "0.47619"    "0.41463"    "0.48387"    "0.39437"
+
+    "LABEL SHAPE: ("    "5720"    "1"    ") \nSAMPLE: "    "1"
+
+_______________________START TRAINING_______________________
+.
+WARNING: using -h 0 may be faster
+*
+optimization finished, #iter = 1808
+nu = 0.318440
+obj = -45194.341113, rho = 1.343779
+nSV = 1498, nBSV = 1418
+Total nSV = 1498
+.
+WARNING: using -h 0 may be faster
+*
+optimization finished, #iter = 1900
+nu = 0.323005
+obj = -45836.520121, rho = 2.489244
+nSV = 1517, nBSV = 1437
+Total nSV = 1517
+.
+WARNING: using -h 0 may be faster
+**.*
+optimization finished, #iter = 1951
+nu = 0.313187
+obj = -44504.554890, rho = -0.692658
+nSV = 1472, nBSV = 1387
+Total nSV = 1472
+.
+WARNING: using -h 0 may be faster
+**.*
+optimization finished, #iter = 1750
+nu = 0.314366
+obj = -44637.527717, rho = 1.918525
+nSV = 1475, nBSV = 1405
+Total nSV = 1475
+.
+WARNING: using -h 0 may be faster
+**.*
+optimization finished, #iter = 1884
+nu = 0.318701
+obj = -45135.384105, rho = 1.504903
+nSV = 1498, nBSV = 1415
+Total nSV = 1498
+.
+WARNING: using -h 0 may be faster
+*.*
+optimization finished, #iter = 2273
+nu = 0.316622
+obj = -56363.704872, rho = 1.260625
+nSV = 1855, nBSV = 1762
+Total nSV = 1855
+    "TIME ELAPSED (seconds): "    "28.7253"
+
+_______________________SAVING MODEL TO MODEL.MAT_______________________

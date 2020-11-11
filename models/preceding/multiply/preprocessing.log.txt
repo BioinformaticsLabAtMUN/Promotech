@@ -1,0 +1,319 @@
+*************************************************************************************************************
+*************************************************************************************************************
+*************************************************************************************************************
+
+
+PART 2 (PREPROCESSING USING KNN FUNCTION)
+
+*************************************************************************************************************
+*************************************************************************************************************
+*************************************************************************************************************
+
+
+"RUNNING "    "MYCOBACTER"    "CLOSTRIDIUM"    "RHODOBACTER_1"    "RHODOBACTER_2"    "BACILLUS"
+
+*********************************MYCOBACTER**********************************
+P: ../../data/bacteria_1_1/MYCOBACTER/positive.fasta 
+N: ../../data/bacteria_1_1/MYCOBACTER/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+___________________PRE-PROCESSING___________________
+
+(1) PROCESSING KNN
+Change all lowercase sequences in the test sample to uppercase
+Replace all lowercase sequences in positive samples with uppercase
+Replace all lowercase sequences in negative samples with uppercase
+Starting KNN
+TIME ELAPSED (min): 186.502
+
+*********************************CLOSTRIDIUM**********************************
+P: ../../data/bacteria_1_1/CLOSTRIDIUM/positive.fasta 
+N: ../../data/bacteria_1_1/CLOSTRIDIUM/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+___________________PRE-PROCESSING___________________
+
+(1) PROCESSING KNN
+Change all lowercase sequences in the test sample to uppercase
+Replace all lowercase sequences in positive samples with uppercase
+Replace all lowercase sequences in negative samples with uppercase
+Starting KNN
+
+
+TIME ELAPSED (min): 54.557
+
+*********************************RHODOBACTER_1**********************************
+P: ../../data/bacteria_1_1/RHODOBACTER_1/positive.fasta 
+N: ../../data/bacteria_1_1/RHODOBACTER_1/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+___________________PRE-PROCESSING___________________
+
+(1) PROCESSING KNN
+Change all lowercase sequences in the test sample to uppercase
+Replace all lowercase sequences in positive samples with uppercase
+Replace all lowercase sequences in negative samples with uppercase
+Starting KNN
+
+
+TIME ELAPSED (min): 245.289
+
+*********************************RHODOBACTER_2**********************************
+P: ../../data/bacteria_1_1/RHODOBACTER_2/positive.fasta 
+N: ../../data/bacteria_1_1/RHODOBACTER_2/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+___________________PRE-PROCESSING___________________
+
+(1) PROCESSING KNN
+Change all lowercase sequences in the test sample to uppercase
+Replace all lowercase sequences in positive samples with uppercase
+Replace all lowercase sequences in negative samples with uppercase
+Starting KNN
+
+
+TIME ELAPSED (min): 183.250
+
+*********************************BACILLUS**********************************
+P: ../../data/bacteria_1_1/BACILLUS/positive.fasta 
+N: ../../data/bacteria_1_1/BACILLUS/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+___________________PRE-PROCESSING___________________
+
+(1) PROCESSING KNN
+Change all lowercase sequences in the test sample to uppercase
+Replace all lowercase sequences in positive samples with uppercase
+Replace all lowercase sequences in negative samples with uppercase
+Starting KNN
+
+
+TIME ELAPSED (min): 48.979
+
+*************************************************************************************************************
+*************************************************************************************************************
+*************************************************************************************************************
+
+PART 3 (PREPROCESSING BPB, DNC, MNC, DAC FUNCTION AND LOADING KNN TO GENERATE X and Y)
+
+*************************************************************************************************************
+*************************************************************************************************************
+*************************************************************************************************************
+
+
+GENERATE X & Y
+
+    "RUNNING "    "MYCOBACTER"    "CLOSTRIDIUM"    "RHODOBACTER_1"    "RHODOBACTER_2"    "BACILLUS"
+
+*********************************MYCOBACTER**********************************
+P: ../../data/bacteria_1_1/MYCOBACTER/positive.fasta 
+N: ../../data/bacteria_1_1/MYCOBACTER/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+
+SHAPES: 
+
+CHROM SHAPE: (1  8032) 
+SEQ SHAPE: (1  8032) 
+LABELS: (1  8032) 
+
+SAMPLES: 
+
+CHROM: NC_008596.1:5734081-5734121(+) 
+SEQ: GGCGTTGATCTGGTTGATCACCTCACGCGCGGCGTTCTGC 
+LABEL: 0 
+___________________PRE-PROCESSING___________________
+
+(1) LOAD KNN
+(2) PROCESSING BPB
+
+TIME ELAPSED (seconds): 1.346
+
+(3) PROCESSING DNC
+
+TIME ELAPSED (seconds): 0.374
+
+(4) PROCESSING MNC
+
+TIME ELAPSED (seconds): 0.215
+
+(5) PROCESSING DAC
+
+TIME ELAPSED (seconds): 2.600
+
+
+X: (8032   165) 
+Y: (8032     1) 
+___________________SAVING DATA___________________
+
+X: data/MYCOBACTER/X.mat
+Y: data/MYCOBACTER/Y.mat*********************************CLOSTRIDIUM**********************************
+P: ../../data/bacteria_1_1/CLOSTRIDIUM/positive.fasta 
+N: ../../data/bacteria_1_1/CLOSTRIDIUM/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+
+SHAPES: 
+
+CHROM SHAPE: (1  2364) 
+SEQ SHAPE: (1  2364) 
+LABELS: (1  2364) 
+
+SAMPLES: 
+
+CHROM: NC_010001.1:3515375-3515415(-) 
+SEQ: CGATTAATTTTTCTATCGTAGGTAGGGCAAATCGCATCGA 
+LABEL: 0 
+___________________PRE-PROCESSING___________________
+
+(1) LOAD KNN
+(2) PROCESSING BPB
+
+TIME ELAPSED (seconds): 0.774
+
+(3) PROCESSING DNC
+
+TIME ELAPSED (seconds): 0.113
+
+(4) PROCESSING MNC
+
+TIME ELAPSED (seconds): 0.057
+
+(5) PROCESSING DAC
+
+TIME ELAPSED (seconds): 0.725
+
+
+X: (2364   165) 
+Y: (2364     1) 
+___________________SAVING DATA___________________
+
+X: data/CLOSTRIDIUM/X.mat
+Y: data/CLOSTRIDIUM/Y.mat*********************************RHODOBACTER_1**********************************
+P: ../../data/bacteria_1_1/RHODOBACTER_1/positive.fasta 
+N: ../../data/bacteria_1_1/RHODOBACTER_1/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+
+SHAPES: 
+
+CHROM SHAPE: (1  10581) 
+SEQ SHAPE: (1  10581) 
+LABELS: (1  10581) 
+
+SAMPLES: 
+
+CHROM: NC_014034.1:762652-762692(+) 
+SEQ: CGGGTCAAGTTCTCCACGGGTGGGATGAGCCCCTCGTGGT 
+LABEL: 1 
+___________________PRE-PROCESSING___________________
+
+(1) LOAD KNN
+(2) PROCESSING BPB
+
+TIME ELAPSED (seconds): 1.762
+
+(3) PROCESSING DNC
+
+TIME ELAPSED (seconds): 0.459
+
+(4) PROCESSING MNC
+
+TIME ELAPSED (seconds): 0.236
+
+(5) PROCESSING DAC
+
+TIME ELAPSED (seconds): 3.173
+
+
+X: (10581    165) 
+Y: (10581      1) 
+___________________SAVING DATA___________________
+
+X: data/RHODOBACTER_1/X.mat
+Y: data/RHODOBACTER_1/Y.mat*********************************RHODOBACTER_2**********************************
+P: ../../data/bacteria_1_1/RHODOBACTER_2/positive.fasta 
+N: ../../data/bacteria_1_1/RHODOBACTER_2/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+
+SHAPES: 
+
+CHROM SHAPE: (1  7963) 
+SEQ SHAPE: (1  7963) 
+LABELS: (1  7963) 
+
+SAMPLES: 
+
+CHROM: NC_014034.1:2374117-2374157(+) 
+SEQ: GACCATCGCAACGCCGACGGCGGCGCTGAAATTGTCCTGC 
+LABEL: 0 
+___________________PRE-PROCESSING___________________
+
+(1) LOAD KNN
+(2) PROCESSING BPB
+
+TIME ELAPSED (seconds): 1.351
+
+(3) PROCESSING DNC
+
+TIME ELAPSED (seconds): 0.336
+
+(4) PROCESSING MNC
+
+TIME ELAPSED (seconds): 0.179
+
+(5) PROCESSING DAC
+
+TIME ELAPSED (seconds): 2.421
+
+
+X: (7963   165) 
+Y: (7963     1) 
+___________________SAVING DATA___________________
+
+X: data/RHODOBACTER_2/X.mat
+Y: data/RHODOBACTER_2/Y.mat*********************************BACILLUS**********************************
+P: ../../data/bacteria_1_1/BACILLUS/positive.fasta 
+N: ../../data/bacteria_1_1/BACILLUS/negative.fasta 
+Directory already exists.
+___________________LOADING FROM DISK___________________
+
+SHAPES: 
+
+CHROM SHAPE: (1  2119) 
+SEQ SHAPE: (1  2119) 
+LABELS: (1  2119) 
+
+SAMPLES: 
+
+CHROM: CP002927.1:2362306-2362346(+) 
+SEQ: CGCCGGTGCATAAATAATTTATATTTATACAAACCCAATA 
+LABEL: 0 
+___________________PRE-PROCESSING___________________
+
+(1) LOAD KNN
+(2) PROCESSING BPB
+
+TIME ELAPSED (seconds): 0.638
+
+(3) PROCESSING DNC
+
+TIME ELAPSED (seconds): 0.094
+
+(4) PROCESSING MNC
+
+TIME ELAPSED (seconds): 0.054
+
+(5) PROCESSING DAC
+
+TIME ELAPSED (seconds): 0.640
+
+
+X: (2119   165) 
+Y: (2119     1) 
+___________________SAVING DATA___________________
+
+X: data/BACILLUS/X.mat
+Y: data/BACILLUS/Y.mat>> load('C:\Users\ruben\Documents\Github\DNAPromoterRecognition\models\multiply\data\RHODOBACTER_1\Y.mat')
+>> 
