@@ -1,6 +1,6 @@
 Program bTSSfinder
 Search for sigma 70, 24, 32, 28 and 38 promoters
-Input file with query sequence(s): example.fasta
+Input file with query sequence(s): /project/example.fasta
 Search parameters: for Escherichia coli
 TSSs of different Sigma classes are processed separately
 Search only on Sense Strand
@@ -25,7 +25,7 @@ sigma38(+):    231   Score   1.85     -35 (193) tcgaag >>> aaaact -10 (223)
 sigma70(+):    228   Score   1.89     -35 (193) tcgaag >>> gaaaaa -10 (221)
 sigma28(+):    227   Score   1.94     -35 (194) cgaaggca >>> ggcgaaaa -10 (220)
 
-   Totally:     11 promoter(s) predicted
+   Total:     11 promoter(s) predicted
 
 
 
@@ -43,7 +43,7 @@ sigma70(+):    211   Score   1.96     -35 (171) gtaaag >>> caaact -10 (204)
 sigma24(+):    209   Score   1.98     -35 (173) aaagta >>> gcaaa -10 (202)
 sigma32(+):    203   Score   1.95     -35 (167) acctgta >>> acccgcctcg -10 (198)
 
-   Totally:     11 promoter(s) predicted
+   Total:     11 promoter(s) predicted
 
 
 
@@ -61,6 +61,6 @@ sigma32(+):    449   Score   1.94     -35 (414) gaatata >>> atatctatta -10 (444)
 sigma70(+):    404   Score   1.97     -35 (364) ctaaaa >>> tataat -10 (396)
 sigma28(+):    220   Score   1.81     -35 (187) tcgaggtc >>> tcggacga -10 (213)
 
-   Totally:     11 promoter(s) predicted
+   Total:     11 promoter(s) predicted
 
 

@@ -1,11 +1,15 @@
-BPROM needs 32bit operating system
+#BPROM needs 32bit operating system
 docker pull 32bit/ubuntu:16.04
 https://hub.docker.com/r/32bit/ubuntu (Ubuntu 16.04)
 https://github.com/docker-32bit/ubuntu
 
 docker images
-#Run new docker
+#Run new docker 32bits
 docker run -it --name ubuntu32 -v $(pwd):/project 32bit/ubuntu:16.04 /bin/bash
+
+#Run new docker 64bits
+docker run -it --name ubuntu64 -v $(pwd):/project ubuntu /bin/bash
+
 #Run existent docker by name
 docker exec -it 32bit/ubuntu /bin/bash 
 
@@ -30,6 +34,9 @@ sudo chmod 7777 -R /project
 sudo chmod +x /project/bTSSfinder
 sudo apt-get update
 sudo apt-get install gfortran
-./project/install.sh
 /project/bTSSfinder -i /project/example.fasta -o /project/out 
 head /project/out.txt 
+
+
+#RUN G4promfinder
+pip3 install numpy pandas matplotlib biopython openpyxl

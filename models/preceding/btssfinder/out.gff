@@ -1,7 +1,7 @@
 ##gff-version 3.2.1
 #Program bTSSfinder
 #Search for sigma 70, 24, 32, 28 and 38 promoters
-#Input file with query sequence(s): example.fasta
+#Input file with query sequence(s): /project/example.fasta
 #Search parameters: for Escherichia coli
 #TSSs of different Sigma classes are processed separately
 #Search only on Sense Strand

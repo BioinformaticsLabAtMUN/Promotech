@@ -13,7 +13,7 @@ if $CONDITION ==0; then
 fi
 tar -xvf gcc-4.8-infrastructure.tar.xz
 
-sed -i -r 'PATH=~/fortran/:$PATH'' ~/.bash_profile
+sed -i -r 'PATH=~/fortran/:$PATH' ~/.bash_profile
 source ~/.bash_profile
 fortran --version
 wget ''
