@@ -90,7 +90,7 @@ Promotech was compared against previous developed models. The models' linux exec
 
 - Setup and run the Ubuntu 16.04 32bits docker container
    - `docker pull 32bit/ubuntu:16.04`
-   - `cd models/predecing/bprom`
+   - `cd models/preceding/bprom`
    - `docker run -it --name ubuntu32 -v $(pwd):/project 32bit/ubuntu:16.04 /bin/bash`
 - Run the program
    - `export TSS_DATA="/project/bprom_data/"`
