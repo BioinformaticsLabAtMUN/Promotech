@@ -108,7 +108,7 @@ TBA
 
 - Setup libraries
 
-pip3 install numpy pandas matplotlib biopython openpyxl
+   - `pip3 install numpy pandas matplotlib biopython openpyxl`
 
 - Run the program
     - `cd models/preceding/g4promfinder`
