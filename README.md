@@ -88,6 +88,8 @@ Promotech was compared against previous developed models. The models' linux exec
 
 1. **BPROM** 
 
+Source: http://linux1.softberry.com/berry.phtml?topic=fdp.htm
+
 - Setup and run the Ubuntu 16.04 32bits docker container
    - `docker pull 32bit/ubuntu:16.04`
    - `cd models/preceding/bprom`
@@ -103,6 +105,8 @@ Promotech was compared against previous developed models. The models' linux exec
          
 2. **bTSSfinder**
 
+Source: https://www.cbrc.kaust.edu.sa/btssfinder/about.php
+
 - Setup and run the Ubuntu 18.04 64bits docker container
    - `docker pull ubuntu/18.04`
    - `cd models/preceding/btssfinder`
@@ -116,6 +120,8 @@ Promotech was compared against previous developed models. The models' linux exec
 - Check the results. The program will generate two files called `out.bed`, `out.gff`, and `out.out`.
 
 3. **G4Promfinder**
+
+Source: https://github.com/MarcoDiSalvo90/G4PromFinder
 
 - Setup libraries
 
@@ -138,6 +144,9 @@ Promotech was compared against previous developed models. The models' linux exec
 - Check the results. The program will generate two files called `ABOUT PROMOTERS.txt` and `promoter coordinates.txt`.
 
 4. **MULTiPLy**
+
+Source code: http://flagshipnt.erc.monash.edu/MULTiPly/ (Not working)
+Article: https://academic.oup.com/bioinformatics/article/35/17/2957/5288244
 
 TBA
 
