@@ -103,7 +103,17 @@ Promotech was compared against previous developed models. The models' linux exec
          
 2. **bTSSfinder**
 
-TBA
+- Setup and run the Ubuntu 18.04 64bits docker container
+   - `docker pull ubuntu/18.04`
+   - `cd models/preceding/btssfinder`
+   - `docker run -it --name ubuntu64 -v $(pwd):/project ubuntu:18.04 /bin/bash`
+- Run the program
+   - `sudo chmod +x /project/bTSSfinder`
+   - `export bTSSfinder_Data="/project/Data/"`
+   - `project/bTSSfinder -i /project/example.fasta -o /project/out`
+- Check the results
+   - `head /project/out.txt`
+- Check the results. The program will generate two files called `out.bed`, `out.gff`, and `out.out`.
 
 3. **G4Promfinder**
 
