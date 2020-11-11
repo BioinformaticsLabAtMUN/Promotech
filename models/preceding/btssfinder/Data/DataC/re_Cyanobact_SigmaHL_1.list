@@ -1,0 +1,39 @@
+List of    12 RE motifs in [  1:251], (+ chain) of "Pos" SEQs |Similarity: >= 80%; Found in >=  5.00% of "Pos" SEQs and <= 10.00% of "Neg" SEQs; Ratio of "Pos" and "Neg" FREQs:   1.50
+12
+>2135|Escherichia coli RegulonDB (v8.0) | Promoter: rrsA-ileT-alaT-rrlA-rrfA   TF: Lrp(ECK120011383)   Action: -| Binding Site ID: ECK120020741   Chain: fwd
+agaaaattattt
+12	2
+>2136|Escherichia coli RegulonDB (v8.0) | Promoter: rrsB-gltT-rrlB-rrfB   TF: Lrp(ECK120011383)   Action: -| Binding Site ID: ECK120020742   Chain: fwd
+agaaaattattt
+12	2
+>2137|Escherichia coli RegulonDB (v8.0) | Promoter: rrsB-gltT-rrlB-rrfB   TF: Lrp(ECK120011383)   Action: -| Binding Site ID: ECK125145822   Chain: fwd
+agcaaaaataaa
+12	2
+>2150|Escherichia coli RegulonDB (v8.0) | Promoter: malPQ   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012790   Chain: rev
+caggatgagg
+10	2
+>2151|Escherichia coli RegulonDB (v8.0) | Promoter: malPQ   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012788   Chain: rev
+actcctccct
+10	2
+>2155|Escherichia coli RegulonDB (v8.0) | Promoter: malS   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012367   Chain: fwd
+tctcatcctg
+10	2
+>2156|Escherichia coli RegulonDB (v8.0) | Promoter: malS   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120013179   Chain: fwd
+agggatgagt
+10	2
+>2159|Escherichia coli RegulonDB (v8.0) | Promoter: malEFG   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012371   Chain: rev
+ggggcgtagg
+10	2
+>2537|Escherichia coli RegulonDB (v8.0) | Promoter: feaR   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051484   Chain: rev
+aaaatacattt
+11	2
+>2544|Escherichia coli RegulonDB (v8.0) | Promoter: sodB   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051505   Chain: fwd
+aagttcatctt
+11	2
+>2557|Escherichia coli RegulonDB (v8.0) | Promoter: hmp   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051486   Chain: fwd
+agaaccattta
+11	2
+>2817|Escherichia coli RegulonDB (v8.0) | Promoter: yagK   TF: RcdA(ECK125158217)   Action: -| Binding Site ID: ECK125158243   Chain: rev
+ttgtgtactc
+10	2
+//

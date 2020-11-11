@@ -1,0 +1,111 @@
+List of    36 RE motifs in [  1:251], (+ chain) of "Pos" SEQs |Similarity: >= 80%; Found in >=  5.00% of "Pos" SEQs and <= 10.00% of "Neg" SEQs; Ratio of "Pos" and "Neg" FREQs:   1.50
+36
+> Escherichia coli RegulonDB (v8.0) | Promoter: soxR   TF: AcrR(ECK120015994)   Action: -| Binding Site ID: ECK125202665   Chain: fwd
+aagttaactt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: soxS   TF: AcrR(ECK120015994)   Action: -| Binding Site ID: ECK125202665   Chain: rev
+aagttaactt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: adrA   TF: CsgD(ECK120013342)   Action: +| Binding Site ID: ECK120026340   Chain: fwd
+tggctcacccg
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: rpoH   TF: DnaA(ECK120011903)   Action: -| Binding Site ID: ECK120012945   Chain: rev
+tgtggataa
+9	1
+> Escherichia coli RegulonDB (v8.0) | Promoter: dnaAN-recF   TF: DnaA(ECK120011903)   Action: +-| Binding Site ID: ECK125158277   Chain: rev
+tgtggataa
+9	1
+> Escherichia coli RegulonDB (v8.0) | Promoter: dnaAN-recF   TF: DnaA(ECK120011903)   Action: +-| Binding Site ID: ECK125158283   Chain: rev
+tctggaaag
+9	1
+> Escherichia coli RegulonDB (v8.0) | Promoter: yciG   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK125134654   Chain: rev
+aatatatttt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yciGFE   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK125134654   Chain: rev
+aatatatttt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: ftnA   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK125108660   Chain: fwd
+atattttaat
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yjjQ-bglJ   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK120034509   Chain: fwd
+tcatttaatt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yjjP   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK120034509   Chain: rev
+aattaaatga
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yjjQ-bglJ   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK120034507   Chain: fwd
+aattaaatga
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yjjP   TF: H-NS(ECK120011294)   Action: -| Binding Site ID: ECK120034507   Chain: rev
+tcatttaatt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yojI   TF: Lrp(ECK120011383)   Action: +| Binding Site ID: ECK120048926   Chain: rev
+catcaggataaa
+12	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: rrsB-gltT-rrlB-rrfB   TF: Lrp(ECK120011383)   Action: -| Binding Site ID: ECK125145822   Chain: fwd
+agcaaaaataaa
+12	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: malPQ   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012788   Chain: rev
+actcctccct
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: malS   TF: MalT(ECK120012218)   Action: +| Binding Site ID: ECK120012369   Chain: fwd
+gctcaccctt
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: ndh   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051499   Chain: fwd
+aagaacatttt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: feaR   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051484   Chain: rev
+aaaatacattt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: feaB   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051484   Chain: fwd
+aaatgtatttt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: tehAB   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051507   Chain: fwd
+aaaatgagtaa
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: grxD   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK125095366   Chain: rev
+aaaatgttatt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: sufABCDSE   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051509   Chain: rev
+aaaagcatgtt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: fliAZY   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051449   Chain: rev
+ataactcatat
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: fliAZY   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK120051449   Chain: rev
+ataactcatat
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: dsdC   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK125095352   Chain: rev
+gatttacatct
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: tsgA   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK125095362   Chain: fwd
+aaaatgcaatt
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: waaH   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK125095350   Chain: rev
+aatatgtaaaa
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: rfe-wzzE-wecBC-rffGHCA-wzxE-rffT-wzyE-rffM   TF: NsrR(ECK120016814)   Action: -| Binding Site ID: ECK125095382   Chain: fwd
+aatttgcatat
+11	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: yagK   TF: RcdA(ECK125158217)   Action: -| Binding Site ID: ECK125158243   Chain: rev
+ttgtgtactc
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: sulA   TF: RcdA(ECK125158217)   Action: -| Binding Site ID: ECK125158226   Chain: rev
+ctatgcacat
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: hlyE   TF: SlyA(ECK120012253)   Action: +| Binding Site ID: ECK120033902   Chain: rev
+gttgcagataaa
+12	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: torR   TF: TorR(ECK120012482)   Action: -| Binding Site ID: ECK120014115   Chain: rev
+atatgaacag
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: torR   TF: TorR(ECK120012482)   Action: -| Binding Site ID: ECK120014118   Chain: rev
+atatgaacag
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: tnaC   TF: TorR(ECK120012482)   Action: +| Binding Site ID: ECK120012488   Chain: fwd
+cgattcacat
+10	2
+> Escherichia coli RegulonDB (v8.0) | Promoter: tnaCAB   TF: TorR(ECK120012482)   Action: +| Binding Site ID: ECK120012488   Chain: fwd
+cgattcacat
+10	2
+//

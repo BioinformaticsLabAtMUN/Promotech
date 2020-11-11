@@ -1,0 +1,105 @@
+>gi|9627425|ref|NC_001604.1| Enterobacteria phage T7                           
+ Length of sequence-      7739
+ Threshold for promoters -  0.20
+ Number of predicted promoters -     20
+ Promoter Pos:    459 LDF-  6.49
+ -10 box at pos.    444 ATTTAAAAT Score    74
+ -35 box at pos.    422 TTAAA    Score    35
+ Promoter Pos:   6318 LDF-  4.15
+ -10 box at pos.   6303 ATTTATGAT Score    65
+ -35 box at pos.   6282 TTCCAG    Score    29
+ Promoter Pos:   6983 LDF-  3.87
+ -10 box at pos.   6968 AGATAAAGT Score    46
+ -35 box at pos.   6948 TTGAAC    Score    38
+ Promoter Pos:    759 LDF-  3.78
+ -10 box at pos.    744 CGGTACGAT Score    58
+ -35 box at pos.    724 TTGACA    Score    66
+ Promoter Pos:   7712 LDF-  3.19
+ -10 box at pos.   7697 GTTTATAAG Score    45
+ -35 box at pos.   7673 TCACCT    Score    -4
+ Promoter Pos:   4627 LDF-  3.00
+ -10 box at pos.   4612 CTGAAAAT Score    76
+ -35 box at pos.   4589 TCGGTA    Score    -7
+ Promoter Pos:   7330 LDF-  2.52
+ -10 box at pos.   7315 CGGTATCAT Score    72
+ -35 box at pos.   7291 ATGAAA    Score    30
+ Promoter Pos:   2611 LDF-  2.41
+ -10 box at pos.   2596 TTGTAAACT Score    70
+ -35 box at pos.   2577 ATGGTG    Score    -6
+ Promoter Pos:   1534 LDF-  2.25
+ -10 box at pos.   1519 GTATATGCT Score    46
+ -35 box at pos.   1499 TTTACT    Score    42
+ Promoter Pos:   4201 LDF-  2.14
+ -10 box at pos.   4186 ATTAACAT Score    56
+ -35 box at pos.   4161 TTACAT    Score    27
+ Promoter Pos:   3198 LDF-  2.07
+ -10 box at pos.   3183 AGGTACGAT Score    57
+ -35 box at pos.   3166 CTGCGG    Score    -3
+ Promoter Pos:   1162 LDF-  1.97
+ -10 box at pos.   1147 TGGTCTGAT Score    40
+ -35 box at pos.   1124 TTGACC    Score    44
+ Promoter Pos:   5981 LDF-  1.90
+ -10 box at pos.   5966 CTTTATGAT Score    66
+ -35 box at pos.   5947 GTCATT    Score     0
+ Promoter Pos:   2284 LDF-  1.88
+ -10 box at pos.   2269 TCGGTAAT Score    42
+ -35 box at pos.   2248 CTGACG    Score    25
+ Promoter Pos:   6623 LDF-  1.75
+ -10 box at pos.   6608 TCGTAGAGT Score    39
+ -35 box at pos.   6591 TTTAAA    Score    41
+ Promoter Pos:   5367 LDF-  1.70
+ -10 box at pos.   5351 TGCTAAGCT Score    55
+ -35 box at pos.   5331 ATGAAC    Score     8
+ Promoter Pos:   4928 LDF-  1.32
+ -10 box at pos.   4913 GGTTAACTT Score    45
+ -35 box at pos.   4893 ATGAGG    Score     7
+ Promoter Pos:   1853 LDF-  1.15
+ -10 box at pos.   1838 TTATATGC Score    49
+ -35 box at pos.   1819 CTGATG    Score    17
+ Promoter Pos:   3802 LDF-  1.13
+ -10 box at pos.   3787 TGACATGCT Score    30
+ -35 box at pos.   3767 TTTATG    Score    33
+ Promoter Pos:     74 LDF-  0.66
+ -10 box at pos.     59 ACCTAAAGT Score    38
+ -35 box at pos.     38 GTACCT    Score     0
+
+ Oligonucleotides from known TF binding sites:
+
+ For promoter at    459:
+       oxyR:  GATTAATT at position     439 Score -   9
+        ihf:  TTAATTTA at position     441 Score -  12
+        hns:  TAATTTAA at position     442 Score -   9
+     rpoD18:  TTTAAAAT at position     445 Score -   7
+ For promoter at   6318:
+       modE:  TATACAAG at position    6328 Score -  13
+ For promoter at   6983:
+      rpoH2:  CCCTTTAA at position    6978 Score -  10
+ No such sites for promoter at    759
+ For promoter at   7712:
+        crp:  AAATGTAA at position    7654 Score -  13
+        crp:  TCACACTT at position    7662 Score -  11
+     rpoS17:  TTATGTTT at position    7714 Score -   7
+ For promoter at   4627:
+       carP:  CTGTAAAA at position    4612 Score -   7
+     rpoD17:  TGTAAAAT at position    4613 Score -  11
+ No such sites for promoter at   7330
+ For promoter at   2611:
+       cytR:  ACTTGTAA at position    2594 Score -   9
+ No such sites for promoter at   1534
+ For promoter at   4201:
+        crp:  ATGCCTGA at position    4165 Score -   9
+ For promoter at   3198:
+        fis:  TTATCTAA at position    3192 Score -  11
+ For promoter at   1162:
+        crp:  ATGCCTGA at position    1154 Score -   9
+ No such sites for promoter at   5981
+ For promoter at   2284:
+     rpoD15:  TGTCTCAC at position    2238 Score -   9
+ No such sites for promoter at   6623
+ No such sites for promoter at   5367
+ No such sites for promoter at   4928
+ No such sites for promoter at   1853
+ No such sites for promoter at   3802
+ For promoter at     74:
+     rpoD17:  TACCTAAA at position      39 Score -  11
+     rpoD19:  CACCTAAA at position      58 Score -   6

@@ -1,0 +1,18 @@
+List of     5 RE motifs in [  1:200], (+/- chains) of "Pos" SEQs |Similarity: >= 80%; Found in >=  5.00% of "Pos" SEQs and <= 10.00% of "Neg" SEQs; Ratio of "Pos" and "Neg" FREQs:   1.50
+5
+>29|CBTFBS0029 | OS:  Anabaena sp. PCC 7120 | Gene: mntH | RE: ManR BS2 | BF: ManR
+tatgagaa
+8	1
+>858|Escherichia coli RegulonDB (v8.0) | Promoter: adrA   TF: CsgD(ECK120013342)   Action: +| Binding Site ID: ECK120026340   Chain: fwd
+tggctcacccg
+11	2
+>977|Escherichia coli RegulonDB (v8.0) | Promoter: dnaAN-recF   TF: DnaA(ECK120011903)   Action: +-| Binding Site ID: ECK125158283   Chain: rev
+tctggaaag
+9	1
+>2817|Escherichia coli RegulonDB (v8.0) | Promoter: yagK   TF: RcdA(ECK125158217)   Action: -| Binding Site ID: ECK125158243   Chain: rev
+ttgtgtactc
+10	2
+>2824|Escherichia coli RegulonDB (v8.0) | Promoter: asr   TF: RcdA(ECK125158217)   Action: +| Binding Site ID: ECK125158236   Chain: fwd
+atcgttacac
+10	2
+//

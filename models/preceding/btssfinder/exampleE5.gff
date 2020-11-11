@@ -1,0 +1,48 @@
+##gff-version 3.2.1
+#Program bTSSfinder
+#Search for sigma 70, 24, 32, 28 and 38 promoters
+#Input file with query sequence(s): example.fasta
+#Search parameters: for Escherichia coli
+#TSSs of different Sigma classes are processed separately
+#Search only on Sense Strand
+#Total scoring threshold for sigma70:   0.06
+#                            sigma24:   0.00
+#                            sigma32:   1.01
+#                            sigma28:   1.24
+#                            sigma38:   0.31
+##sequence-region Example_query_1        1     1101
+Example_query_1	btssfinder	tss	962	962	1.94	+	.	promoter=sigma24;box35pos=933;box35seq=gcatat;box10pos=951;box10seq=actaa
+Example_query_1	btssfinder	tss	958	958	1.93	+	.	promoter=sigma32;box35pos=924;box35seq=aaatcaa;box10pos=944;box10seq=cgcggcaact
+Example_query_1	btssfinder	tss	950	950	1.91	+	.	promoter=sigma28;box35pos=915;box35seq=agatgttg;box10pos=933;box10seq=gcatataa
+Example_query_1	btssfinder	tss	949	949	1.91	+	.	promoter=sigma38;box35pos=911;box35seq=cagaag;box10pos=936;box10seq=tataaa
+Example_query_1	btssfinder	tss	925	925	1.91	+	.	promoter=sigma70;box35pos=887;box35seq=gtgatt;box10pos=913;box10seq=gaagat
+Example_query_1	btssfinder	tss	558	558	1.72	+	.	promoter=sigma28;box35pos=523;box35seq=tagagctg;box10pos=543;box10seq=ggcgatct
+Example_query_1	btssfinder	tss	370	370	1.89	+	.	promoter=sigma24;box35pos=334;box35seq=gcactt;box10pos=359;box10seq=gcaaa
+Example_query_1	btssfinder	tss	344	344	1.82	+	.	promoter=sigma32;box35pos=309;box35seq=ttgttgc;box10pos=330;box10seq=ggcggcactt
+Example_query_1	btssfinder	tss	231	231	1.85	+	.	promoter=sigma38;box35pos=193;box35seq=tcgaag;box10pos=218;box10seq=aaaact
+Example_query_1	btssfinder	tss	228	228	1.89	+	.	promoter=sigma70;box35pos=193;box35seq=tcgaag;box10pos=216;box10seq=gaaaaa
+Example_query_1	btssfinder	tss	227	227	1.94	+	.	promoter=sigma28;box35pos=194;box35seq=cgaaggca;box10pos=213;box10seq=ggcgaaaa
+##sequence-region Example_query_2        1     1101
+Example_query_2	btssfinder	tss	1023	1023	1.89	+	.	promoter=sigma70;box35pos=984;box35seq=gtgtta;box10pos=1010;box10seq=gagaat
+Example_query_2	btssfinder	tss	823	823	1.95	+	.	promoter=sigma38;box35pos=785;box35seq=tagcct;box10pos=810;box10seq=aatatt
+Example_query_2	btssfinder	tss	810	810	1.95	+	.	promoter=sigma28;box35pos=770;box35seq=taaccgtt;box10pos=790;box10seq=tatgatca
+Example_query_2	btssfinder	tss	808	808	1.95	+	.	promoter=sigma32;box35pos=773;box35seq=ccgttaa;box10pos=794;box10seq=atcaacacaa
+Example_query_2	btssfinder	tss	765	765	1.95	+	.	promoter=sigma24;box35pos=735;box35seq=gcaata;box10pos=754;box10seq=tctca
+Example_query_2	btssfinder	tss	717	717	1.97	+	.	promoter=sigma70;box35pos=679;box35seq=tatcat;box10pos=704;box10seq=taatga
+Example_query_2	btssfinder	tss	426	426	1.96	+	.	promoter=sigma28;box35pos=393;box35seq=tcaggaac;box10pos=412;box10seq=cctgaatt
+Example_query_2	btssfinder	tss	257	257	1.95	+	.	promoter=sigma38;box35pos=223;box35seq=tttcag;box10pos=244;box10seq=tattca
+Example_query_2	btssfinder	tss	211	211	1.96	+	.	promoter=sigma70;box35pos=171;box35seq=gtaaag;box10pos=199;box10seq=caaact
+Example_query_2	btssfinder	tss	209	209	1.98	+	.	promoter=sigma24;box35pos=173;box35seq=aaagta;box10pos=198;box10seq=gcaaa
+Example_query_2	btssfinder	tss	203	203	1.95	+	.	promoter=sigma32;box35pos=167;box35seq=acctgta;box10pos=189;box10seq=acccgcctcg
+##sequence-region Example_query_3        1     1101
+Example_query_3	btssfinder	tss	951	951	1.98	+	.	promoter=sigma24;box35pos=917;box35seq=aaacca;box10pos=939;box10seq=tcaga
+Example_query_3	btssfinder	tss	940	940	1.98	+	.	promoter=sigma70;box35pos=904;box35seq=cttaca;box10pos=927;box10seq=tacaat
+Example_query_3	btssfinder	tss	924	924	1.97	+	.	promoter=sigma28;box35pos=891;box35seq=ttcacaca;box10pos=910;box10seq=gataaaaa
+Example_query_3	btssfinder	tss	900	900	1.95	+	.	promoter=sigma38;box35pos=861;box35seq=tttcat;box10pos=887;box10seq=catttt
+Example_query_3	btssfinder	tss	756	756	1.95	+	.	promoter=sigma32;box35pos=722;box35seq=atattaa;box10pos=742;box10seq=agcatcatcc
+Example_query_3	btssfinder	tss	542	542	1.96	+	.	promoter=sigma28;box35pos=510;box35seq=tccactct;box10pos=529;box10seq=gctggtca
+Example_query_3	btssfinder	tss	525	525	1.95	+	.	promoter=sigma38;box35pos=485;box35seq=tataaa;box10pos=512;box10seq=cactct
+Example_query_3	btssfinder	tss	471	471	1.97	+	.	promoter=sigma24;box35pos=436;box35seq=tatcta;box10pos=460;box10seq=tctat
+Example_query_3	btssfinder	tss	449	449	1.94	+	.	promoter=sigma32;box35pos=414;box35seq=gaatata;box10pos=435;box10seq=atatctatta
+Example_query_3	btssfinder	tss	404	404	1.97	+	.	promoter=sigma70;box35pos=364;box35seq=ctaaaa;box10pos=391;box10seq=tataat
+Example_query_3	btssfinder	tss	220	220	1.81	+	.	promoter=sigma28;box35pos=187;box35seq=tcgaggtc;box10pos=206;box10seq=tcggacga

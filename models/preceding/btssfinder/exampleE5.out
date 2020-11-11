@@ -1,0 +1,66 @@
+Program bTSSfinder
+Search for sigma 70, 24, 32, 28 and 38 promoters
+Input file with query sequence(s): example.fasta
+Search parameters: for Escherichia coli
+TSSs of different Sigma classes are processed separately
+Search only on Sense Strand
+Total scoring threshold for sigma70:   0.06
+                            sigma24:   0.00
+                            sigma32:   1.01
+                            sigma28:   1.24
+                            sigma38:   0.31
+
+
+>Example_query_1
+   Length of Query sequence:      1101
+sigma24(+):    962   Score   1.94     -35 (933) gcatat >>> actaa -10 (955)
+sigma32(+):    958   Score   1.93     -35 (924) aaatcaa >>> cgcggcaact -10 (953)
+sigma28(+):    950   Score   1.91     -35 (915) agatgttg >>> gcatataa -10 (940)
+sigma38(+):    949   Score   1.91     -35 (911) cagaag >>> tataaa -10 (941)
+sigma70(+):    925   Score   1.91     -35 (887) gtgatt >>> gaagat -10 (918)
+sigma28(+):    558   Score   1.72     -35 (523) tagagctg >>> ggcgatct -10 (550)
+sigma24(+):    370   Score   1.89     -35 (334) gcactt >>> gcaaa -10 (363)
+sigma32(+):    344   Score   1.82     -35 (309) ttgttgc >>> ggcggcactt -10 (339)
+sigma38(+):    231   Score   1.85     -35 (193) tcgaag >>> aaaact -10 (223)
+sigma70(+):    228   Score   1.89     -35 (193) tcgaag >>> gaaaaa -10 (221)
+sigma28(+):    227   Score   1.94     -35 (194) cgaaggca >>> ggcgaaaa -10 (220)
+
+   Totally:     11 promoter(s) predicted
+
+
+
+>Example_query_2
+   Length of Query sequence:      1101
+sigma70(+):   1023   Score   1.89     -35 (984) gtgtta >>> gagaat -10 (1015)
+sigma38(+):    823   Score   1.95     -35 (785) tagcct >>> aatatt -10 (815)
+sigma28(+):    810   Score   1.95     -35 (770) taaccgtt >>> tatgatca -10 (797)
+sigma32(+):    808   Score   1.95     -35 (773) ccgttaa >>> atcaacacaa -10 (803)
+sigma24(+):    765   Score   1.95     -35 (735) gcaata >>> tctca -10 (758)
+sigma70(+):    717   Score   1.97     -35 (679) tatcat >>> taatga -10 (709)
+sigma28(+):    426   Score   1.96     -35 (393) tcaggaac >>> cctgaatt -10 (419)
+sigma38(+):    257   Score   1.95     -35 (223) tttcag >>> tattca -10 (249)
+sigma70(+):    211   Score   1.96     -35 (171) gtaaag >>> caaact -10 (204)
+sigma24(+):    209   Score   1.98     -35 (173) aaagta >>> gcaaa -10 (202)
+sigma32(+):    203   Score   1.95     -35 (167) acctgta >>> acccgcctcg -10 (198)
+
+   Totally:     11 promoter(s) predicted
+
+
+
+>Example_query_3
+   Length of Query sequence:      1101
+sigma24(+):    951   Score   1.98     -35 (917) aaacca >>> tcaga -10 (943)
+sigma70(+):    940   Score   1.98     -35 (904) cttaca >>> tacaat -10 (932)
+sigma28(+):    924   Score   1.97     -35 (891) ttcacaca >>> gataaaaa -10 (917)
+sigma38(+):    900   Score   1.95     -35 (861) tttcat >>> catttt -10 (892)
+sigma32(+):    756   Score   1.95     -35 (722) atattaa >>> agcatcatcc -10 (751)
+sigma28(+):    542   Score   1.96     -35 (510) tccactct >>> gctggtca -10 (536)
+sigma38(+):    525   Score   1.95     -35 (485) tataaa >>> cactct -10 (517)
+sigma24(+):    471   Score   1.97     -35 (436) tatcta >>> tctat -10 (464)
+sigma32(+):    449   Score   1.94     -35 (414) gaatata >>> atatctatta -10 (444)
+sigma70(+):    404   Score   1.97     -35 (364) ctaaaa >>> tataat -10 (396)
+sigma28(+):    220   Score   1.81     -35 (187) tcgaggtc >>> tcggacga -10 (213)
+
+   Totally:     11 promoter(s) predicted
+
+

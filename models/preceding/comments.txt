@@ -1,0 +1,35 @@
+BPROM needs 32bit operating system
+docker pull 32bit/ubuntu:16.04
+https://hub.docker.com/r/32bit/ubuntu (Ubuntu 16.04)
+https://github.com/docker-32bit/ubuntu
+
+docker images
+#Run new docker
+docker run -it --name ubuntu32 -v $(pwd):/project 32bit/ubuntu:16.04 /bin/bash
+#Run existent docker by name
+docker exec -it 32bit/ubuntu /bin/bash 
+
+#Remove image
+docker rm ubuntu32
+
+#Obtain docker image info
+oot@5391fb74833e:/# uname -a
+Linux 5391fb74833e 5.4.39-linuxkit #1 SMP Fri May 8 23:03:06 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
+
+#List running containers
+docker ps
+
+#Running Bprom from docker mounting on the folder /Users/ruben.chevezguardado/mun/Promotech/models/preceding/bprom/
+export TSS_DATA="/project/bprom_data/"
+/project/linux/bprom /project/example_data/seq.fa /project/out.txt
+head /project/out.txt 
+
+#Running Bprom from docker mounting on the folder /Users/ruben.chevezguardado/mun/Promotech/models/preceding/btssfinder/
+export TSS_DATA="/project/Data/"
+sudo chmod 7777 -R /project
+sudo chmod +x /project/bTSSfinder
+sudo apt-get update
+sudo apt-get install gfortran
+./project/install.sh
+/project/bTSSfinder -i /project/example.fasta -o /project/out 
+head /project/out.txt 

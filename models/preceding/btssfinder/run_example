@@ -1,0 +1,21 @@
+./bTSSfinder -i example.fasta -o exampleC1a -h 1 -t c -c 1 -n 0.24,0.26,0.20,0.30 &
+
+./bTSSfinder -i example.fasta -o exampleC1b -h 1 -t c -c 1 &
+
+./bTSSfinder -i example.fasta -o exampleC5 -h:1 -t c -c 5 &
+
+./bTSSfinder -i example.fasta -o exampleCA -h:2 -t c -c A &
+
+
+
+./bTSSfinder -i example.fasta -o exampleE1a -h:1 -c 1 -n 0.24,0.26,0.20,0.30 &
+
+./bTSSfinder -i example.fasta -o exampleE1b -h:1 -c 1 &
+
+./bTSSfinder -i example.fasta -o exampleE5 -h:1 -c 5 &
+
+./bTSSfinder -i example.fasta -o exampleE32 -h:2 -c 32 &
+
+
+
+ 

@@ -1,0 +1,71 @@
+Features, Data files and Search parameters for cyanobacterial sigmaC promoter prediction
+
+21			   			 --- Number of features
+
+Feature: -10
+Cyanobact_SigmaCL_NFM_m10.h
+3	12	MIN and MAX Distances to TSS
+6		Length of Classification motif 
+Feature: -35
+Cyanobact_SigmaCL_NFM_m35.h
+15	22	MIN and MAX -35/-10 distances allowed 
+6		Length of Classification motif 
+Feature: -15
+Cyanobact_SigmaCL_NFM_m15.h
+0	10	MIN and MAX Distances between -15 right boundary and -10 box-core left boundary (<=10)
+5		Length of Classification motif 
+Feature: UP 
+Cyanobact_SigmaCL_NFM_UP.h 
+0	130	MIN and MAX Distances between UP element right boundary and -35 box-core left boundary (<=130)
+17		Length of Classification motif 
+Feature: TSS 
+Cyanobact_SigmaCL_NFM_tss.h
+6	6	Search Region, relative to TSS: [TSS-6, TSS+9]
+6		Length of Classification motif 
+Feature: 3mers
+trip_181_221_Cyanobact_SigmaCL.h
+181	220	Search region (Absolute Positions) 
+Feature: 4mers/1
+tetra_1_200_Cyanobact_SigmaCL.h
+1	200	Search region 1 (Absolute Positions) 
+Feature: 4mers/2
+tetra_101_221_Cyanobact_SigmaCL.h
+101	221	Search region 1 (Absolute Positions) 
+Feature: 5mers/1
+penta_1_200_Cyanobact_SigmaCL.h
+1	200	Search region 1 (Absolute Positions) 
+Feature: 5mers/2
+penta_101_221_Cyanobact_SigmaCL.h
+101	221	Search region 1 (Absolute Positions) 
+Feature: 6mers/1
+hexa_1_200_Cyanobact_SigmaCL.h
+1	200	Search region 1 (Absolute Positions) 
+Feature: 6-mers/2
+hexa_101_221_Cyanobact_SigmaCL.h
+101	221	Search region 1 (Absolute Positions) 
+Feature: d35/10
+Cyanobact_SigmaCL_FM_dis_m35_10.h
+Feature: d10/tss
+Cyanobact_SigmaCL_FM_dis_m10_TSS.h
+Feature: d15/10
+Cyanobact_SigmaCL_FM_dis_m15_m10.h
+Feature: REdens1
+re_Cyanobact_SigmaCL_1.h
+re_Cyanobact_SigmaCL_1.list
+1	251		Search region, + chain (Absolute Positions)
+Feature: REdens2
+re_Cyanobact_SigmaCL_2.h
+re_Cyanobact_SigmaCL_2.list
+1	200		Search region, +/- chains (Absolute Positions)
+Feature: FEnergy
+fenergy.dat
+1	220			 
+Feature: BStacking
+bstacking.dat
+1	220
+Feature: Entropy
+entropy.dat
+1	220
+Feature: MeltingT
+1	220	
+//
