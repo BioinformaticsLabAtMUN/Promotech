@@ -106,7 +106,25 @@ TBA
 
 3. **G4Promfinder**
 
-TBA
+- Setup libraries
+
+pip3 install numpy pandas matplotlib biopython openpyxl
+
+- Run the program
+    - `cd models/preceding/g4promfinder`
+    - `python3 g4promfinder.py`
+- The program will ask to input the name and location of the FASTA file. Inside the `models/preceding/g4promfinder` folder, there is an example file called `example.fasta` you can use to test the program.
+   
+   ```G4PromFinder is a genome-wide predictor of transcription promoters in bacterial genomes. It analyzes both the strands. It is recommended for GC-rich genomes
+   Input: Genome file
+   Output: a text file containing promoter coordinates and a file containing informations about them
+   Genome file must be in fasta format
+   Enter the input genome file name: example.fasta
+   G4PromFinder is working, please wait...
+   Work finished, see output files in the current directory
+   ```
+
+- Check the results. The program will generate two files called `ABOUT PROMOTERS.txt` and `promoter coordinates.txt`.
 
 4. **MULTiPLy**
 
