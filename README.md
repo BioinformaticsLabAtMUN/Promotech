@@ -81,3 +81,35 @@ or
 
 - **Note:** This command expects the user to have used the `--parse-genome, -pg` command before to generate the pre-processed sequences from the bacterial genome and stored in the files **results/[MODEL_TYPE].data** and **results/[MODEL_TYPE]-INV.data**. 
 - **Note:** For comparison, it took 1 hour, 5 minutes, and 27 seconds to predict both, forward and inverse strand batches, each with 4,639,634 pre-processed sequences, with a total of 9,279,268 sequences as input and an output of 55,002 promoters sequences with a score above the 0.5 threshold.
+
+
+### Benchmark
+Promotech was compared against previous developed models. The models' linux executable files are located at the `./models/preceding/` folder. The instructions to run each program are the following:
+
+1. **BPROM** 
+
+- Setup and run the Ubuntu 16.04 32bits docker container
+   - `docker pull 32bit/ubuntu:16.04`
+   - `docker run -it --name ubuntu32 -v $(pwd):/project 32bit/ubuntu:16.04 /bin/bash`
+- Run the program
+   - `export TSS_DATA="/project/bprom_data/"`
+   - `/project/linux/bprom /project/example_data/seq.fa /project/out.txt`
+- Check the results
+   - `head /project/out.txt`
+- Stop the docker container
+   - `docker rm ubuntu32`
+
+         
+2. **bTSSfinder**
+
+TBA
+
+3. **G4Promfinder**
+
+TBA
+
+4. **MULTiPLy**
+
+TBA
+
+         
