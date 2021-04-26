@@ -4,7 +4,7 @@ Finding the location of bacterial promoter sequences is essential for microbiolo
 
 ## Requirements
 
-1. Download and Install Anaconda or Miniconda from ≈https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
+1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
    - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
    - `bash miniconda.sh`
 2. Install conda environment from the prebuilt environment YAML file. 
