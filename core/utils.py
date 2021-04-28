@@ -227,7 +227,6 @@ def fastaToTetranucletideTable(seqs):
 
 def dataConverter( seqs, data_type, tokenizer_path=None, print_fn=print, log_file=None ):
   if log_file is None:
-    print_fn = print
     print_fn("\n\n NO LOG FILE SPECIFIED. REDIRECTING OUTPUT TO CONSOLE.", log_file)
   if data_type == "RF-HOT":
     data_df = fastaToHotEncodingSequences( seqs )

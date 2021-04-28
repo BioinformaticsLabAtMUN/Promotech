@@ -135,6 +135,7 @@ def parseGenome40NTSequences(fasta_file_path, out_dir="results", promoter_size=4
     
 
 def predictGenomeSequences(
+  input_dir="results",
   out_dir="results",
   model_type="RF-HOT",
   threshold=0.5,
@@ -145,11 +146,11 @@ def predictGenomeSequences(
     print_fn = print
     
   log_file              = os.path.join(out_dir, "predict.log.txt")
-  chrom_output_path     = os.path.join( out_dir, "CHROM.data" )  
-  seqs_output_path      = os.path.join( out_dir, "SEQS.data" )  
-  inv_seqs_output_path  = os.path.join( out_dir, "SEQS-INV.data" )  
-  forward_strand_seqs_file= os.path.join("results", "{}.data".format( model_type ) ) 
-  inverse_strand_seqs_file= os.path.join("results", "{}-INV.data".format( model_type ) ) 
+  chrom_output_path     = os.path.join(input_dir, "CHROM.data" )  
+  seqs_output_path      = os.path.join(input_dir, "SEQS.data" )  
+  inv_seqs_output_path  = os.path.join(input_dir, "SEQS-INV.data" )  
+  forward_strand_seqs_file= os.path.join(input_dir, "{}.data".format( model_type ) ) 
+  inverse_strand_seqs_file= os.path.join(input_dir, "{}-INV.data".format( model_type ) ) 
   
   if not os.path.exists(out_dir)  :
     raise ValueError("FILE PATH {} DOES NOT EXISTS. PLEASE PARSE THE GENOME FILE FIRST.".format(out_dir))

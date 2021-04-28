@@ -13,3 +13,5 @@ models/RF-HOT.model
 ui/__pycache__/GUI.cpython-36.pyc
 commands.txt
 Dockerfile
+.vscode
+.DS_Store
