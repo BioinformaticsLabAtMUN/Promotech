@@ -11,6 +11,8 @@ from utils import dataConverter
 import progressbar
 import logging
 from sklearn.metrics import precision_recall_curve, average_precision_score, roc_auc_score, roc_curve
+from sklearn.metrics import precision_recall_curve, average_precision_score, roc_auc_score, roc_curve
+from sklearn.metrics import matthews_corrcoef, accuracy_score, f1_score
 import json
 
 os.environ['TF_CPP_MIN_VLOG_LEVEL'] = '3'
@@ -22,7 +24,7 @@ warnings.filterwarnings("ignore")
 
 class iPromoter2L:
     NON_PROMOTERS_TAG = "nonPromoter"
-    def __init__(self, chlg_model, output_dir="results"):
+    def __init__(self, chlg_model, output_dir="RF-HOT"):
         self.root_path = "datasets/benchmark/iPromoter-2L"
         self.databases = {
             "sigma24": iPromoter2LDatabase(path.join(self.root_path    , "sigma24.fasta")    , {"tag": "sigma24"    , "label": 1}),
@@ -37,12 +39,13 @@ class iPromoter2L:
         self.output_dir = output_dir
         os.makedirs( output_dir , exist_ok=True )
         self.output_file = "iPromoter2L-predictions.csv"
+        self.pred_eval_fn = np.mean #max
 
     def run(self):
-        self.print_fn(self.databases)
-        self.generateMasterTable()
-        self.load_model(path.join("models", "{}.model".format(self.chlg_model)))
-        self.predict()
+        # self.print_fn(self.databases)
+        # self.generateMasterTable()
+        # self.load_model(path.join("models", "{}.model".format(self.chlg_model)))
+        # self.predict()
         self.evaluate()
         self.evaluate_per_sigma()
     
@@ -74,13 +77,15 @@ class iPromoter2L:
         return np.array(seqs)
 
     def predict(self):
-        self.print_fn("\n\n CREATING PREDICTIONS USING MODEL {} ON DATA WITH SHAPE {}".format(self.chlg_model, self.data.shape)) 
+        self.print_fn("\n\n CREATING PREDICTIONS USING MODEL {} ON DATA WITH SHAPE {}".format(
+            self.chlg_model, self.data.shape))
         columns = list(self.data.columns) + ["predictions"]
         predictions = pd.DataFrame(columns=columns)
         for index, row in self.data.iterrows():
             self.print_fn("\n\n{}/{}. PREDICTING SEQ: {}".format(index+1, len(self.data), row["seq"])) 
             seqs = self.window(row["seq"])
-            X = dataConverter(seqs, print_fn=self.silent_print_fn, data_type=self.chlg_model, log_file=None, tokenizer_path="models/tokenizer.data")
+            X = dataConverter(seqs, print_fn=self.silent_print_fn, data_type=self.chlg_model,
+                              log_file=None, tokenizer_path="models/tokenizer.data")
             y_probs = self.model.predict_proba( X )
             y_pred  = y_probs[:, 1] if y_probs.shape[1] == 2 else y_probs[:, 0]
             dict_data = dict(row.copy())
@@ -92,15 +97,17 @@ class iPromoter2L:
 
     def evaluate(self):
         self.predictions = pd.read_csv(path.join(self.output_dir, self.output_file))
-        y_pred = np.array([ max(np.array(pred.split("-")).astype(float)) for pred in self.predictions["predictions"] ])
-        y = self.predictions["label"].values
+        y_pred = np.array([self.pred_eval_fn(np.array(pred.split("-")).astype(float)) for pred in self.predictions.predictions])
+        y = self.predictions.label.values
         self.print_fn("Y_PRED ({}): {}".format(y_pred.shape, y_pred))
         self.print_fn("Y      ({}): {}".format(y.shape, y))
         ave_pre = average_precision_score(y, y_pred)
         roc_auc = roc_auc_score(y, y_pred)
         p, r, pr_t = precision_recall_curve(y, y_pred)
         fpr, tpr, roc_t = roc_curve(y, y_pred)
-        json.dump({
+
+        self.print_fn("EVALUATION({}): \nAVE_PRE: {} ROC_AUC: {}".format("combined", ave_pre, roc_auc))
+        data = {
             "p"   : list(p.astype(str)),
             "r"   : list(r.astype(str)),
             "pr_t": list(pr_t.astype(str)),
@@ -109,22 +116,42 @@ class iPromoter2L:
             "roc_t"  : list(roc_t.astype(str)),
             "ave_pre": ave_pre,
             "roc_auc": roc_auc
-        }, open(path.join(self.output_dir, self.output_file.replace("csv", "json")), "w"), indent=2)
+        }
+        try:
+            summary = pd.DataFrame({'p': p, 'r': r, 't': list(pr_t)+[1]})
+            best_thres = summary[summary.p == summary.r].iloc[0].t
+            mcc = matthews_corrcoef(y, y_pred >= best_thres)
+            acc = accuracy_score(y, y_pred >= best_thres)
+            f1  = f1_score(y, y_pred >= best_thres)
+
+            data["best_threshold"] = {
+                "t": summary[summary.p == summary.r].iloc[0].t,
+                "p": summary[summary.p == summary.r].iloc[0].p,
+                "r": summary[summary.p == summary.r].iloc[0].r,
+                "acc": acc,
+                "mcc": mcc,
+                "f1" : f1
+            }
+            print("Best Threshold Value: ", data["best_threshold"])
+        except Exception as e:
+            print("ERROR: ", e)
+        json.dump(data, open(path.join(self.output_dir, self.output_file.replace("csv", "json")), "w"), indent=2)
 
     def evaluate_per_sigma(self):
         self.predictions = pd.read_csv(path.join(self.output_dir, self.output_file))
 
         for i_s, sigma in enumerate(self.predictions.tag.unique()):
             notes = list()
-            self.print_fn("{}/{}. EVALUATING SIGMA: {} VS NON-PROMOTERS".format(i_s+1, len(self.predictions.tag.unique()), sigma))
+            self.print_fn("{}/{}. EVALUATING SIGMA: {} VS NON-PROMOTERS".format(
+                i_s+1, len(self.predictions.tag.unique()), sigma))
             data = self.predictions
-            data = data[(data.tag == sigma) |  (data.tag == self.NON_PROMOTERS_TAG)]
+            data = data[(data.tag == sigma) | (data.tag == self.NON_PROMOTERS_TAG)]
             self.print_fn("{}: P: {}/{} N: {}/{} TOTAL: {}/{}".format(
                 sigma, len(data[data.label == 1]), len(data),
                 len(data[data.label == 0]), len(data),
                 len(data), len(self.predictions)))
 
-            y_pred = np.array([ max(np.array(pred.split("-")).astype(float)) for pred in data.predictions ])
+            y_pred = np.array([self.pred_eval_fn(np.array(pred.split("-")).astype(float)) for pred in data.predictions])
             y = data.label.values
             self.print_fn("Y_PRED ({}): {}".format(y_pred.shape, y_pred))
             self.print_fn("Y      ({}): {}".format(y.shape, y))
@@ -137,7 +164,9 @@ class iPromoter2L:
                 notes.append(str(e))
             p, r, pr_t = precision_recall_curve(y, y_pred)
             fpr, tpr, roc_t = roc_curve(y, y_pred)
-            json.dump({
+
+            print("EVALUATION({}): \nAVE_PRE: {} ROC_AUC: {}".format(sigma, ave_pre,  roc_auc))
+            data = {
                 "p"   : list(p.astype(str)),
                 "r"   : list(r.astype(str)),
                 "pr_t": list(pr_t.astype(str)),
@@ -147,7 +176,26 @@ class iPromoter2L:
                 "ave_pre": ave_pre,
                 "roc_auc": roc_auc,
                 "notes"  : str(notes)
-            }, open(path.join(self.output_dir, sigma+"_"+self.output_file.replace("csv", "json")), "w"), indent=2)
+            }
+            try:
+                summary = pd.DataFrame({'p': p, 'r': r, 't': list(pr_t) + [1]})
+                best_thres = summary[summary.p == summary.r].iloc[0].t
+                mcc = matthews_corrcoef(y, y_pred >= best_thres)
+                acc = accuracy_score(y, y_pred >= best_thres)
+                f1 = f1_score(y, y_pred >= best_thres)
+
+                data["best_threshold"] = {
+                    "t": summary[summary.p == summary.r].iloc[0].t,
+                    "p": summary[summary.p == summary.r].iloc[0].p,
+                    "r": summary[summary.p == summary.r].iloc[0].r,
+                    "acc": acc,
+                    "mcc": mcc,
+                    "f1": f1
+                }
+                print("Best Threshold Value: ", data["best_threshold"])
+            except Exception as e:
+                print("ERROR: ", e)
+            json.dump(data, open(path.join(self.output_dir, sigma+"_"+self.output_file.replace("csv", "json")), "w"), indent=2)
 
     def print_fn(self, msg, log_file=None, debug=True):
         if debug:

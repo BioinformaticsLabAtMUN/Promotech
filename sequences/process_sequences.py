@@ -25,7 +25,7 @@ def parseSequences(seqs, sequence_length=40, tokenizer_path="./models/tokenizer.
     data_df = dataConverter( seqs=seqs, data_type=data_type, tokenizer_path=tokenizer_path, print_fn=print_fn, log_file=log_file )
     return data_df
 
-def predictSequencesFromString(sequences_str, print_fn=print_fn, out_dir="results", threshold=0.5, model_type="RF-HOT" , log_file=None, start_time=time.time()):
+def predictSequencesFromString(sequences_str, print_fn=print_fn, out_dir="RF-HOT", threshold=0.5, model_type="RF-HOT" , log_file=None, start_time=time.time()):
   if log_file is None:
     print_fn = print
     print_fn("\n\n NO LOG FILE SPECIFIED. REDIRECTING OUTPUT TO CONSOLE.", log_file)
@@ -64,7 +64,7 @@ def predictSequencesFromString(sequences_str, print_fn=print_fn, out_dir="result
   df.to_csv(pred_file_path, index=None, sep='\t', columns=None)
   return chroms, seqs, y_pred, X
   
-def predictSequences(fasta_file_path, print_fn=print_fn, out_dir="results", threshold=0.5, model_type="RF-HOT" ):
+def predictSequences(fasta_file_path, print_fn=print_fn, out_dir="RF-HOT", threshold=0.5, model_type="RF-HOT" ):
   start_time        = time.time()
   log_file           = os.path.join(out_dir, "sequences.log.txt")
   if print_fn is None:

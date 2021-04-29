@@ -18,8 +18,8 @@ if __name__ == "__main__":
   parser.add_argument("-f"  , "--fasta"            , help="FASTA sequences file. ", nargs=1, default=None) #, type=argparse.FileType('r')
   parser.add_argument("-m"  , "--model"            , help='Type of model used. The options are: ["RF-HOT", "RF-TETRA", "GRU", "LSTM"]', choices=["RF-HOT", "RF-TETRA", "GRU", "LSTM"], default="RF-HOT")
   parser.add_argument("-t"  , "--threshold"        , help='Prediction threshold.', type=float, default=0.5)
-  parser.add_argument("-o"  , "--output-dir"       , help='Output folder.', type=str, default="results")
-  parser.add_argument("-i"  , "--input-dir"        , help='Input folder.', type=str, default="results")
+  parser.add_argument("-o"  , "--output-dir"       , help='Output folder.', type=str, default="RF-HOT")
+  parser.add_argument("-i"  , "--input-dir"        , help='Input folder.', type=str, default="RF-HOT")
 
   parser.add_argument("-b"  , "--benchmark"        , help='Run Benchmark', action="store_true")
   parser.add_argument("-bm" , "--benchmark-model"  , help='Model to use during the benchmark. The options are: ["iPromoter2L"]', choices=["iPromoter2L"], default="iPromoter2L")

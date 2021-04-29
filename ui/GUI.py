@@ -179,10 +179,10 @@ class Promotech_UI(QWidget):
         self.chroms, self.raw_seqs, self.y_pred, self.prepro_seqs = predictSequencesFromString(
             seqs_content, 
             print_fn=self.update_console, 
-            out_dir="results", 
+            out_dir="RF-HOT",
             threshold=0.5, 
             model_type="RF-HOT" , 
-            log_file="./results/gui_prediction.log.txt", 
+            log_file="./RF-HOT/gui_prediction.log.txt",
             start_time=time.time()
         )
         self.progress_bar.setRange(0, 100)

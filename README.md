@@ -5,10 +5,12 @@ Finding the location of bacterial promoter sequences is essential for microbiolo
 ## Requirements
 
 1. Download and Install Anaconda or Miniconda from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). 
-   - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh`
+   - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh` for *Ubuntu 20.04*
+   - `wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh` for *Mac OS Big Sur V11.3*
    - `bash miniconda.sh`
 2. Install conda environment from the prebuilt environment YAML file. 
-   - `conda env create -f promotech_env.yml`
+   - `conda env create -f promotech_env.yml` for *Ubuntu 20.04*
+   - `conda env create -f promotech_mac_env.yml` for *Mac OS Big Sur V11.3*
    - **Note:** The environment was made on Ubuntu 20.04, different versions of the packages could be required for different operating systems.
 3. Activate environment
    - `conda activate promotech_env`

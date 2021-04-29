@@ -5,7 +5,7 @@ core/__pycache__
 ui/__pycache__
 models/RF-TETRA.model
 models/RF-HOT.model
-results
+results/benchmark/iPromoter2L/RF-HOT
 models/RF-HOT.model
 *.model
 *.pyc
@@ -15,3 +15,4 @@ commands.txt
 Dockerfile
 .vscode
 .DS_Store
+/.idea
