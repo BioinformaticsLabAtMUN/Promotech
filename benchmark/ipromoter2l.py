@@ -42,10 +42,10 @@ class iPromoter2L:
         self.pred_eval_fn = np.mean #max
 
     def run(self):
-        # self.print_fn(self.databases)
-        # self.generateMasterTable()
-        # self.load_model(path.join("models", "{}.model".format(self.chlg_model)))
-        # self.predict()
+        self.print_fn(self.databases)
+        self.generateMasterTable()
+        self.load_model(path.join("models", "{}.model".format(self.chlg_model)))
+        self.predict()
         self.evaluate()
         self.evaluate_per_sigma()
     
