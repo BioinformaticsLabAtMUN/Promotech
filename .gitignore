@@ -5,7 +5,6 @@ core/__pycache__
 ui/__pycache__
 models/RF-TETRA.model
 models/RF-HOT.model
-results/benchmark/iPromoter2L/RF-HOT
 models/RF-HOT.model
 *.model
 *.pyc
