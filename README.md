@@ -67,7 +67,7 @@ The examples in the section below were tested in a desktop computer with the fol
 
 ### Whole-Genome
 
-1. Parse the whole-genome in the FASTA file by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the `--test-samples, -ts` parameter.  An example of the command-line output obtained when running this command is found [HERE](examples/genome/parse.example.log.txt)
+1. Parse the whole-genome in the FASTA file (a single sequence is expected) by using `--parse-genome, -pg` and specifying the file using `--fasta, -f` . A smaller subset of the sliding window sequences can be used for testing purposes using the `--test-samples, -ts` parameter.  An example of the command-line output obtained when running this command is found [HERE](examples/genome/parse.example.log.txt)
 
 `python promotech.py -pg -m RF-HOT -f examples/genome/ECOLI_2.fasta -o results` 
 
