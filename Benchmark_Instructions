@@ -1,0 +1,78 @@
+### Benchmark
+Promotech was compared against previous developed models. The models' linux executable files are located at the `./models/preceding/` folder. The instructions to run each program are the following:
+
+1. **BPROM** 
+
+Source: http://linux1.softberry.com/berry.phtml?topic=fdp.htm
+
+- Setup and run the Ubuntu 16.04 32bits docker container
+   - `docker pull 32bit/ubuntu:16.04`
+   - `cd models/preceding/bprom`
+   - `docker run -it --name ubuntu32 -v $(pwd):/project 32bit/ubuntu:16.04 /bin/bash`
+- Run the program
+   - `export TSS_DATA="/project/bprom_data/"`
+   - `/project/linux/bprom /project/example_data/seq.fa /project/out.txt`
+- Check the results
+   - `head /project/out.txt`
+- Stop the docker container
+   - `docker rm ubuntu32`
+
+         
+2. **bTSSfinder**
+
+Source: https://www.cbrc.kaust.edu.sa/btssfinder/about.php
+Article: https://doi.org/10.1093/bioinformatics/btw629
+
+- Setup and run the Ubuntu 18.04 64bits docker container
+   - `docker pull ubuntu/18.04`
+   - `cd models/preceding/btssfinder`
+   - `docker run -it --name ubuntu64 -v $(pwd):/project ubuntu:18.04 /bin/bash`
+- Run the program
+   - `sudo chmod +x /project/bTSSfinder`
+   - `export bTSSfinder_Data="/project/Data/"`
+   - `project/bTSSfinder -i /project/example.fasta -o /project/out`
+- Check the results
+   - `head /project/out.txt`
+- Check the results. The program will generate two files called `out.bed`, `out.gff`, and `out.out`.
+
+3. **G4Promfinder**
+
+Source: https://github.com/MarcoDiSalvo90/G4PromFinder
+Article: https://doi.org/10.1186/s12859-018-2049-x
+
+- Setup libraries
+
+   - `pip3 install numpy pandas matplotlib biopython openpyxl`
+
+- Run the program
+    - `cd models/preceding/g4promfinder`
+    - `python3 g4promfinder.py`
+- The program will ask to input the name and location of the FASTA file. Inside the `models/preceding/g4promfinder` folder, there is an example file called `example.fasta` you can use to test the program.
+   
+   ```G4PromFinder is a genome-wide predictor of transcription promoters in bacterial genomes. It analyzes both the strands. It is recommended for GC-rich genomes
+   Input: Genome file
+   Output: a text file containing promoter coordinates and a file containing informations about them
+   Genome file must be in fasta format
+   Enter the input genome file name: example.fasta
+   G4PromFinder is working, please wait...
+   Work finished, see output files in the current directory
+   ```
+
+- Check the results. The program will generate two files called `ABOUT PROMOTERS.txt` and `promoter coordinates.txt`.
+
+4. **MULTiPLy**
+
+Article: https://doi.org/10.1093/bioinformatics/btz016
+
+- Download and install the latest version of Matlab. https://uk.mathworks.com/downloads/web_downloads/
+- `cd models/preceding/multiply`
+- Edit the `MULTiPLy.md` file and change the 12th line, `[head,seq]=fastaread('sample.fasta');`, with the fasta file you want to test. You can use `sample.fasta` for testing.
+- Run the `MULTiPLy.md` file from the Matlab's GUI command line.
+
+         
+5. **iPromoter-2L**
+
+Article: https://doi.org/10.1093/bioinformatics/btx579
+Data: http://bioinformatics.hitsz.edu.cn/iPromoter-2L/data/
+
+`python promotech.py -b -bm iPromoter2L -m RF-HOT -o results`
