@@ -1,6 +1,6 @@
 # PROMOTECH: A UNIVERSAL TOOL FOR PROMOTER DETECTION IN BACTERIAL GENOMES
 
-Finding the location of bacterial promoter sequences is essential for microbiology since promoters play a central role in regulating gene expression.  Promotech is a machine-learning-based classifier trained to generate a model that generalizes and detects promoters in a wide range of bacterial species.  During the study, two model architectures  were  tested,  Random  Forest  and  Recurrent  Networks. The  Random Forest model, trained with promoter sequences with a binary encoded representation of  each  nucleotide,  achieved  the  highest  performance  across  nine  different  bacteria and was able to work with short 40bp sequences and whole bacterial genomes using a sliding window.  The selected model was evaluated on a validation set of four bacteria not used during training.
+Promotech is a machine-learning-based classifier trained to generate a model that generalizes and detects promoters in a wide range of bacterial species.  During the study, two model architectures  were  tested,  Random  Forest  and  Recurrent  Networks. The  Random Forest model, trained with promoter sequences with a binary encoded representation of  each  nucleotide,  achieved  the  highest  performance  across  nine  different  bacteria and was able to work with short 40bp sequences and whole bacterial genomes using a sliding window.  The selected model was evaluated on a validation set of four bacteria not used during training.
 
 ## Requirements
 
@@ -163,3 +163,9 @@ Article: https://academic.oup.com/bioinformatics/article/35/17/2957/5288244
 http://bioinformatics.hitsz.edu.cn/iPromoter-2L/data/
 
 `python promotech.py -b -bm iPromoter2L -m RF-HOT -o results`
+
+## Cite
+
+If you use Promotech please cite:
+
+Promotech: A general tool for bacterial promoter recognition. Ruben Chevez-Guardado, Lourdes Peña-Castillo. [bioRxiv 2021.07.16.452684](https://doi.org/10.1101/2021.07.16.452684)
