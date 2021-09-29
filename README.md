@@ -16,6 +16,7 @@ Promotech is a machine-learning-based classifier trained to generate a model tha
    - `conda activate promotech_env`
 4. Download the models from [here](http://www.cs.mun.ca/~lourdes/public/PromoTech_models/)
 5. Uncompress the two Random Forest models with *.zip* format and save them at the [*models* folder](models/). The resulting files are *models/RF-HOT.model* and *models/RF-TETRA.model*
+6. Make sure all files required to run Promotech are available in promotech's folder
 
 **Note:** A minimum of 24 GB of RAM memory is recommended to run the RF-HOT, LSTM, and GRU model on a whole-genome. Parsing a whole-genome to the RF-TETRA model's input format can produce the python "Memory Error" due to the high complexity and high RAM-memory demand required to obtain the tetra-nucleotide frequencies for millions of sequences in forward and inverse strand. An example of this process is shown in the examples section below. All models can run on lower-end systems, with at least 8GB of RAM, when predicting FASTA files with hundreds or thousands of sequences, 40 nt in length. 
 
