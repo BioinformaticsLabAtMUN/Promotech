@@ -39,7 +39,7 @@ The examples in the section below were tested in a desktop computer with the fol
    - The available options for **whole-genome parsing and prediction** are `RF-HOT`, `GRU`, `LSTM`. 
 5. `-ts, --test-samples` - Used for testing purposes during the genome parsing stage. A whole-genome can be made of 4 million+ nucleotides and can take hours, depending on your system configuration to parse and predict. This command limits the number of sequences the sliding window cuts from the genome. It is used only with the `-pg, --parse-genome` argument.
 5. `-pg, --parse-genome` - Use a sliding window to cut 40 nucleotide sequences from the whole-genome in forward and reverse strand. The files are then saved to the "results" folder with a "[MODEL-TYPE].data" format, where MODEL-TYPE is the name of the model's desired input format, i.e. "RF-HOT.data" and "RF-HOT-INV.data". 
-   - The **mandatory** argument used with this command is `-f, --fasta`. 
+   - The **mandatory** argument used with this command is `-f, --fasta`. Note that the fasta file should contain a single sequence.
    - The **optional** arguments used with this command are `-m, --model`, and `--ts, --test-samples`. 
 6. `-g, --predict-genome` -  This command uses the files generated using the `-pg, --parse-genome` argument and located in the "results" folder. 
    - The **optional** argument used with this command is `-m, --model`. Make sure to match the same model type used during the parsing stage.
@@ -49,11 +49,11 @@ The examples in the section below were tested in a desktop computer with the fol
   <br />
   
   ```
-    >chrom1
+    >seq1
     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    >chrom2
+    >seq2
     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    >chrom3
+    >seq3
     AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
    ```
 
