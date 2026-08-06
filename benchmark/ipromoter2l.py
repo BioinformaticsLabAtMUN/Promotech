@@ -85,7 +85,7 @@ class iPromoter2L:
             self.print_fn("\n\n{}/{}. PREDICTING SEQ: {}".format(index+1, len(self.data), row["seq"])) 
             seqs = self.window(row["seq"])
             X = dataConverter(seqs, print_fn=self.silent_print_fn, data_type=self.chlg_model,
-                              log_file=None, tokenizer_path="models/tokenizer.data")
+                              log_file=None, tokenizer_path=os.path.normpath(os.path.join(dir_path, "..", "models", "tokenizer.data")))
             y_probs = self.model.predict_proba( X )
             y_pred  = y_probs[:, 1] if y_probs.shape[1] == 2 else y_probs[:, 0]
             dict_data = dict(row.copy())

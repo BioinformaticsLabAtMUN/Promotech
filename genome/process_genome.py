@@ -62,7 +62,7 @@ def genomeSlidingWindow(fasta_file_path, log_file=None, promoter_size=40, step_s
   ), log_file)
   return chrom, cutted_seqs
 
-def parseGenome40NTSequences(fasta_file_path, out_dir="RF-HOT", promoter_size=40, step_size=1, test_sample_size=None, data_type = "RF-HOT",  tokenizer_path="./models/tokenizer.data", print_fn=print_fn):
+def parseGenome40NTSequences(fasta_file_path, out_dir="RF-HOT", promoter_size=40, step_size=1, test_sample_size=None, data_type = "RF-HOT",  tokenizer_path=os.path.normpath(os.path.join(dir_path, "..", "models", "tokenizer.data")), print_fn=print_fn):
   if print_fn is None:
     print("NO LOG FILE SPECIFIED. REDIRECTING OUTPUT TO CONSOLE.")
     print_fn = print
