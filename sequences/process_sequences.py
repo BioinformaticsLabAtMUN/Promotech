@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append("{}/../core".format(dir_path))
 from utils import fastaToHotEncodingSequences, charToBinary, print_fn, fastaToTetranucleotides, tetranucleotideToStringSentences, fastaToTetranucletideTable, dataConverter
 
-def parseSequences(seqs, sequence_length=40, tokenizer_path="./models/tokenizer.data", data_type="RF-HOT", log_file=None, print_fn=print_fn ):
+def parseSequences(seqs, sequence_length=40, tokenizer_path=os.path.normpath(os.path.join(dir_path, "..", "models", "tokenizer.data")), data_type="RF-HOT", log_file=None, print_fn=print_fn ):
     if( len(seqs) == 0 ):
       raise ValueError("NO SEQUENCES TO PARSE. " + str(seqs) )
       return
